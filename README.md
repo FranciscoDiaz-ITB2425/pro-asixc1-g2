@@ -26,6 +26,7 @@ La nau estarà situada al **Parc Empresarial Granland Badalona Sud (Barcelona)**
 
 📷 **[Veure imatge de la ubicació](URL)**
 
+
 ---
 
 ## Sistemes de climatització
