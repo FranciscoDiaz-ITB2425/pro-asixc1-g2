@@ -584,3 +584,162 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 - Servidors, switches i sistemes d’emmagatzematge seleccionats per la seva eficiència energètica (etiquetes Energy Star o equivalents).
 - Aquests equips ofereixen el mateix rendiment amb menor consum elèctric i generen menys calor, reduint la necessitat de refrigeració.
+- 
+
+
+
+# Pas a pas per a la implementació de servidors d'àudio i vídeo
+
+Aquest document detalla els passos per implementar un servidor d'àudio (Icecast2), un servidor de streaming de vídeo (Nginx amb mòdul RTMP) i comprovacions d'amplada de banda (amb iperf3), basant-se exclusivament en les comandes i configuracions del document proporcionat.
+
+## Pàgina 1: Instal·lació de paquets per al servidor d'àudio
+
+**Objectiu**: Preparar el sistema per al servidor d'àudio amb Icecast2 i eines relacionades.
+
+**Passos**:
+1. **Instal·lació de paquets**:
+   ```bash
+   sudo apt install icecast2 nginx libnginx-mod-rtmp ffmpeg iperf3 htop -y
+   ```
+   - **Descripció**: Instal·la `icecast2` (streaming d'àudio), `nginx` i `libnginx-mod-rtmp` (streaming de vídeo), `ffmpeg` (gestió multimèdia), `iperf3` (proves d'amplada de banda) i `htop` (monitorització). L'opció `-y` automatitza la instal·lació.
+   - **Acció**: Executar la comanda en un sistema Ubuntu.
+
+2. **Habilitació d'Icecast2**:
+   ```bash
+   sudo sed -i 's/ENABLE=false/ENABLE=true/' /etc/default/icecast2
+   ```
+   - **Descripció**: Modifica `/etc/default/icecast2` per habilitar l'inici automàtic d'Icecast2.
+   - **Acció**: Executar la comanda per activar el servei.
+
+**Captura**:
+![Captura Pàgina 1](captura_pagina_1.png)
+
+## Pàgina 2: Configuració del servidor Icecast2
+
+**Objectiu**: Configurar els paràmetres d'Icecast2 per a connexions d'àudio.
+
+**Passos**:
+1. **Edició de la configuració d'Icecast2**:
+   ```xml
+   <limits>
+     <clients>100</clients>
+     <sources>5</sources>
+     <queue-size>524288</queue-size>
+     <client-timeout>30</client-timeout>
+     <header-timeout>15</header-timeout>
+   </limits>
+   ```
+   - **Descripció**: Estableix 100 clients màxims, 5 fonts d'àudio, cua de 524288 bytes, temps d'espera de clients de 30 segons i de capçaleres de 15 segons a `/etc/icecast2/icecast.xml`.
+   - **Acció**: Editar el fitxer amb un editor com `nano` i afegir/modificar la secció `<limits>`.
+
+**Captura**:
+![Captura Pàgina 2](captura_pagina_2.png)
+
+## Pàgina 3: Configuració del tallafocs i inici de DarkIce
+
+**Objectiu**: Obrir ports per a Icecast2 i iniciar el streaming amb DarkIce.
+
+**Passos**:
+1. **Obertura de ports al tallafocs**:
+   ```bash
+   sudo ufw allow 8000/tcp
+   sudo ufw allow 22/tcp
+   ```
+   - **Descripció**: Permet trànsit al port 8000/TCP (Icecast2) i 22/TCP (SSH) amb `ufw`.
+   - **Acció**: Executar les comandes per actualitzar les regles del tallafocs.
+
+2. **Inici de DarkIce**:
+   ```bash
+   sudo darkice
+   ```
+   - **Descripció**: Inicia DarkIce per enviar fluxos d'àudio a Icecast2 usant `/etc/darkice.cfg`.
+   - **Acció**: Executar la comanda per iniciar el streaming.
+
+**Captura**:
+![Captura Pàgina 3](captura_pagina_3.png)
+
+## Pàgina 4: Actualització del sistema
+
+**Objectiu**: Actualitzar el sistema per assegurar la versió més recent dels paquets.
+
+**Passos**:
+1. **Actualització de paquets**:
+   ```bash
+   sudo apt update && sudo apt upgrade
+   ```
+   - **Descripció**: Actualitza la llista de paquets (`apt update`) i instal·la les versions més recents (`apt upgrade`) des dels repositoris d'Ubuntu.
+   - **Acció**: Executar la comanda per mantenir el sistema actualitzat.
+
+**Captura**:
+![Captura Pàgina 4](captura_pagina_4.png)
+
+## Pàgina 5: Configuració del servidor de streaming de vídeo
+
+**Objectiu**: Configurar Nginx per a streaming de vídeo en directe i sota demanda.
+
+**Passos**:
+1. **Creació del directori per a vídeos**:
+   ```bash
+   sudo mkdir -p /var/www/html/videos
+   ```
+   - **Descripció**: Crea el directori `/var/www/html/videos` per emmagatzemar vídeos sota demanda.
+   - **Acció**: Executar la comanda per crear el directori.
+
+2. **Assignació de permisos**:
+   ```bash
+   sudo chmod -R 755 /var/www/html/videos
+   ```
+   - **Descripció**: Assigna permisos 755 al directori `/var/www/html/videos`.
+   - **Acció**: Executar la comanda per configurar els permisos.
+
+3. **Configuració de Nginx RTMP**:
+   ```nginx
+   rtmp {
+       server {
+           listen 1935;
+           chunk_size 4096;
+           application live {
+               live on;
+               record off;
+           }
+           application vod {
+               play /var/www/html/videos;
+           }
+       }
+   }
+   ```
+   - **Descripció**: Configura Nginx per a streaming RTMP al port 1935, amb suport per a streaming en directe (`live`) i sota demanda (`vod`) des de `/var/www/html/videos`.
+   - **Acció**: Afegir aquesta configuració al fitxer de Nginx i reiniciar el servei.
+
+**Captura**:
+![Captura Pàgina 5](captura_pagina_5.png)
+
+## Pàgina 7: Instal·lació d'iperf3
+
+**Objectiu**: Instal·lar iperf3 per a proves d'amplada de banda.
+
+**Passos**:
+1. **Instal·lació d'iperf3**:
+   ```bash
+   sudo apt update && sudo apt install -y iperf3
+   ```
+   - **Descripció**: Actualitza els repositoris i instal·la iperf3. L'output indica que iperf3 ja està a la versió més recent.
+   - **Acció**: Executar la comanda per assegurar que iperf3 està instal·lat.
+
+**Captura**:
+![Captura Pàgina 7](captura_pagina_7.png)
+
+## Pàgina 8: Prova d'amplada de banda amb iperf3
+
+**Objectiu**: Mesurar l'amplada de banda de la xarxa.
+
+**Passos**:
+1. **Prova amb iperf3**:
+   ```bash
+   iperf3 -c 44.202.106.60
+   ```
+   - **Descripció**: Executa iperf3 en mode client per connectar-se al servidor `44.202.106.60` (port 5201). Els resultats mostren una transferència de 1.14 GBytes a 977 Mbits/s de mitjana en 10.04 segons.
+   - **Acció**: Executar la comanda i analitzar els resultats per verificar la capacitat de la xarxa.
+
+**Captura**:
+![Captura Pàgina 8](captura_pagina_8.png)
