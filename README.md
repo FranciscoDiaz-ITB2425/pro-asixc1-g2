@@ -88,7 +88,7 @@ Disposem d’un **terra tècnic elevat (50 cm)** que permet:
 
 El terra tècnic estarà enfonsat al terra de la nau, amb **reixes i portes d’accés**.
 
-📷 **[Veure imatge del terra tècnic](URL)**
+![Veure imatge de la ubicació](fotosaudiovideo/fototerratecnic.png)
 
 ---
 
