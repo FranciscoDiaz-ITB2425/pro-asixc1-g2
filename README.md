@@ -789,8 +789,7 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
      
    - **Acció**: Executar la comanda i analitzar els resultats per verificar la capacitat de la xarxa.
 
-**Captura**:
-![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda4.png)
+![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda3.png)
 
 2. **Prova amb iperf3 -c**:
    ```bash
@@ -800,8 +799,7 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
      
    - **Acció**: Executar la comanda i analitzar els resultats per verificar la capacitat de la xarxa.
 
-**Captura**:
-![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda5.png)
+![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda4.png)
 
 
 <!-- Parte server Diego -->
