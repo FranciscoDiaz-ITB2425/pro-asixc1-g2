@@ -103,7 +103,8 @@ Característiques:
 
 **Dimensions de la sala:** 5m x 4m
 
-📷 **[Veure plànol de la sala de servidors](URL)**
+![Veure imatge de la ubicació](fotosaudiovideo/fotocpd3d.png)
+![Veure imatge de la ubicació](fotosaudiovideo/fotocpd2d.png)
 
 ---
 
@@ -587,10 +588,11 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 - 
 
 
-
 # Pas a pas per a la implementació de servidors d'àudio i vídeo
 
 Aquest document detalla els passos per implementar un servidor d'àudio (Icecast2), un servidor de streaming de vídeo (Nginx amb mòdul RTMP) i comprovacions d'amplada de banda (amb iperf3), basant-se exclusivament en les comandes i configuracions del document proporcionat.
+
+# AUDIO
 
 ## Pàgina 1: Instal·lació de paquets per al servidor d'àudio
 
@@ -611,8 +613,6 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Modifica `/etc/default/icecast2` per habilitar l'inici automàtic d'Icecast2.
    - **Acció**: Executar la comanda per activar el servei.
 
-**Captura**:
-![Captura Pàgina 1](captura_pagina_1.png)
 
 ## Pàgina 2: Configuració del servidor Icecast2
 
@@ -632,8 +632,7 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Estableix 100 clients màxims, 5 fonts d'àudio, cua de 524288 bytes, temps d'espera de clients de 30 segons i de capçaleres de 15 segons a `/etc/icecast2/icecast.xml`.
    - **Acció**: Editar el fitxer amb un editor com `nano` i afegir/modificar la secció `<limits>`.
 
-**Captura**:
-![Captura Pàgina 2](captura_pagina_2.png)
+![Veure imatge de la ubicació](fotosaudiovideo/fotoaudio3.png)
 
 ## Pàgina 3: Configuració del tallafocs i inici de DarkIce
 
@@ -654,9 +653,30 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    ```
    - **Descripció**: Inicia DarkIce per enviar fluxos d'àudio a Icecast2 usant `/etc/darkice.cfg`.
    - **Acció**: Executar la comanda per iniciar el streaming.
+   
+## Inici i executar Icecast i l'audio
 
-**Captura**:
-![Captura Pàgina 3](captura_pagina_3.png)
+**Objectiu**: Executar Icecast i fer la comprovació que funciona l'audio
+
+**Passos**:
+1. **Execució de la comanda de transmissió**:
+   
+**La comanda reprodueix en temps real l'arxiu live.mp3 i l’envia com a streaming d’àudio MP3 a un servidor Icecast a través d'internet.**
+
+![Veure imatge de la ubicació](fotosaudiovideo/fotovideo2.png)
+
+3. **Posar a la URL la ruta necessaria**:
+   ```bash
+   http://LA_IP_CORRESPONENT:8000
+   ```
+4. **Si hem fet tot bé, hauria de sortir la pagina d'Icecast**
+
+![Veure imatge de la ubicació](fotosaudiovideo/fotoaudio9.png)
+
+4. **Seguidament posem la mateixa URL, pero aquest cop afegint /stream després del :8000 per fer servir l'audio**
+
+![Veure imatge de la ubicació](fotosaudiovideo/fotoaudio10.png)
+
 
 ## Pàgina 4: Actualització del sistema
 
@@ -670,8 +690,7 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Actualitza la llista de paquets (`apt update`) i instal·la les versions més recents (`apt upgrade`) des dels repositoris d'Ubuntu.
    - **Acció**: Executar la comanda per mantenir el sistema actualitzat.
 
-**Captura**:
-![Captura Pàgina 4](captura_pagina_4.png)
+# VÍDEO
 
 ## Pàgina 5: Configuració del servidor de streaming de vídeo
 
@@ -710,9 +729,34 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    ```
    - **Descripció**: Configura Nginx per a streaming RTMP al port 1935, amb suport per a streaming en directe (`live`) i sota demanda (`vod`) des de `/var/www/html/videos`.
    - **Acció**: Afegir aquesta configuració al fitxer de Nginx i reiniciar el servei.
+  
+   
+4. **Configuració de Nginx RTMP**:
 
-**Captura**:
-![Captura Pàgina 5](captura_pagina_5.png)
+**Objectiu**: Executar RTPM i fer la comprovació que funciona el video
+
+**Passos**:
+1. **Execució de la comanda de transmissió**:
+   
+**Aquesta comanda de ffmpeg serveix per enviar un vídeo MP4 com a stream en directe cap a un servidor RTMP.**
+
+![Veure imatge de la ubicació](fotosaudiovideo/fotovideo10.png)
+
+2. **Hem d'anar al reproductor multimedia VLC i clicar a obrir un flux de xarxa**
+
+**Aquest pas serveix per reproduir en VLC un vídeo en directe emès per RTMP, hem de posar la URL per obrir el flux de xarxa**
+
+![Veure imatge de la ubicació](fotosaudiovideo/fotovideo4.png)
+
+3. **Si ho hem fet tot bé, hauria d'aparèixer el video en questió, també es pot canviar l'ordre, primer obrir el flux de xarxa i després la comanda de transmissió.**
+
+**Pot ser que haguem de clicar el botó de PLAY uns quants cops, ja que a vegades triga una mica**
+
+![Veure imatge de la ubicació](fotosaudiovideo/fotovideo5.png)
+
+
+
+# COMPROVACIÓ D'AMPLE DE BANDA
 
 ## Pàgina 7: Instal·lació d'iperf3
 
@@ -726,23 +770,39 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Actualitza els repositoris i instal·la iperf3. L'output indica que iperf3 ja està a la versió més recent.
    - **Acció**: Executar la comanda per assegurar que iperf3 està instal·lat.
 
-**Captura**:
-![Captura Pàgina 7](captura_pagina_7.png)
+2. **Per assegurar que funcioni, hem de configurar els ports del security group de l'instància**
+
+![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda2.png)
+
+
 
 ## Pàgina 8: Prova d'amplada de banda amb iperf3
 
 **Objectiu**: Mesurar l'amplada de banda de la xarxa.
 
 **Passos**:
-1. **Prova amb iperf3**:
+1. **Prova amb iperf3 -s**:
    ```bash
-   iperf3 -c 44.202.106.60
+   iperf3 -s
    ```
-   - **Descripció**: Executa iperf3 en mode client per connectar-se al servidor `44.202.106.60` (port 5201). Els resultats mostren una transferència de 1.14 GBytes a 977 Mbits/s de mitjana en 10.04 segons.
+   - **Descripció**:Aquesta comanda inicia iperf3 en mode servidor, deixant la màquina a l’espera de connexions entrants d’un client iperf3.
+     
    - **Acció**: Executar la comanda i analitzar els resultats per verificar la capacitat de la xarxa.
 
 **Captura**:
-![Captura Pàgina 8](captura_pagina_8.png)
+![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda4.png)
+
+2. **Prova amb iperf3 -c**:
+   ```bash
+   iperf3 -c 44.220.106.60
+   ```
+   - **Descripció**: Executa iperf3 en mode client per connectar-se al servidor 44.202.106.60 (port 5201). Els resultats mostren una transferència de 1.14 GBytes a 977 Mbits/s de mitjana en 10.04 segons.
+     
+   - **Acció**: Executar la comanda i analitzar els resultats per verificar la capacitat de la xarxa.
+
+**Captura**:
+![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda5.png)
+
 
 <!-- Parte server Diego -->
 
