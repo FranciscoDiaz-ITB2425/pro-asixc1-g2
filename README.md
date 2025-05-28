@@ -24,7 +24,7 @@ La nau estarà situada al **Parc Empresarial Granland Badalona Sud (Barcelona)**
 - Ronda de Dalt (sortides 25, 26 i 27)
 - Accés a Barcelona per Diagonal Mar i Gran Via
 
-📷 **[Veure imatge de la ubicació](fotosaudiovideo/fotonauindustrial.png)**
+![Veure imatge de la ubicació](fotosaudiovideo/fotonauindustrial.png)
 
 
 ---
