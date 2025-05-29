@@ -1102,25 +1102,25 @@ després hem de clicar a ASSIGNAR DIRECCION IP ELASTICA per crear una ip per ass
 
 **cliquem a l’IP i despres a DIrecció IP elastica associada.**
 
-<center><img src="fotos/fotoselastic/foto5.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/10.png" alt="Prova iperf3 client"></center>
 
 **aqui, el que farem es assignar l’IP elastica a l’instancia que pertoca, en aquest cas posem l’instancia EC23**
 
-<center><img src="fotos/fotoselastic/foto6.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto5.png" alt="Prova iperf3 client"></center>
 
 **després posem l’IP privada que té la instància** 
 
-<center><img src="fotos/fotoselastic/foto7.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto6.png" alt="Prova iperf3 client"></center>
 
 **i cliquem a associar**
 
-<center><img src="fotos/fotoselastic/foto8.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto7.png" alt="Prova iperf3 client"></center>
 
 **per comprovar que ha funcionat hem d’anar a Instàncies i clicar a la instància a la qual hem assignat l’IP, i podrem comprovar que ja l’hem assignat.**
 
-<center><img src="fotos/fotoselastic/foto9.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto8.png" alt="Prova iperf3 client"></center>
 
-<center><img src="fotos/fotoselastic/foto10.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto9.png" alt="Prova iperf3 client"></center>
 
 
 # Disseny i implementació d’una base de dades
