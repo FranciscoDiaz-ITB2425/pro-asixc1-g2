@@ -24,8 +24,9 @@ La nau estarà situada al **Parc Empresarial Granland Badalona Sud (Barcelona)**
 - Ronda de Dalt (sortides 25, 26 i 27)
 - Accés a Barcelona per Diagonal Mar i Gran Via
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotonauindustrial.png)
-
+<p align="center">
+  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Veure imatge de la ubicació">
+</p>
 
 ---
 
@@ -46,7 +47,9 @@ Característiques del sistema:
 
 Inclou un sistema de **detecció de fums VESDA** per a major seguretat.
 
-📷 **[Veure esquema del sistema de refrigeració](URL)**
+<p align="center">
+  📷 <a href="URL">Veure esquema del sistema de refrigeració</a>
+</p>
 
 ---
 
@@ -60,7 +63,9 @@ Per evitar la identificació del CPD:
 - **Control biomètric + PIN Pad**
 - **Només personal autoritzat** coneix la ubicació exacta
 
-📷 **[Veure imatge de la porta i sistemes de seguretat](URL)**
+<p align="center">
+  📷 <a href="URL">Veure imatge de la porta i sistemes de seguretat</a>
+</p>
 
 ---
 
@@ -74,7 +79,9 @@ Per garantir ordre i seguretat:
 - **Cables d’alimentació sota terra tècnic**
 - **Etiquetatge i codificació per colors**
 
-📷 **[Veure esquema de distribució de cablejat](URL)**
+<p align="center">
+  📷 <a href="URL">Veure esquema de distribució de cablejat</a>
+</p>
 
 ---
 
@@ -88,7 +95,9 @@ Disposem d’un **terra tècnic elevat (50 cm)** que permet:
 
 El terra tècnic estarà enfonsat al terra de la nau, amb **reixes i portes d’accés**.
 
-![Veure imatge de la ubicació](fotosaudiovideo/fototerratecnic.png)
+<p align="center">
+  <img src="fotosaudiovideo/fototerratecnic.png" alt="Veure imatge del terra tècnic">
+</p>
 
 ---
 
@@ -103,8 +112,13 @@ Característiques:
 
 **Dimensions de la sala:** 5m x 4m
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotocpd3d.png)
-![Veure imatge de la ubicació](fotosaudiovideo/fotocpd2d.png)
+<p align="center">
+  <img src="fotosaudiovideo/fotocpd3d.png" alt="Esquema 3D del CPD">
+</p>
+
+<p align="center">
+  <img src="fotosaudiovideo/fotocpd2d.png" alt="Esquema 2D del CPD">
+</p>
 
 ---
 
@@ -123,7 +137,6 @@ Cada rack inclou:
 
 Aquesta estructura facilita el manteniment, millora l’eficiència energètica i permet escalar la infraestructura segons necessitats.
 
-📷 **[Veure imatge dels racks](URL)**
 
 # Infraestructura IT
 
@@ -592,13 +605,16 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 Aquest document detalla els passos per implementar un servidor d'àudio (Icecast2), un servidor de streaming de vídeo (Nginx amb mòdul RTMP) i comprovacions d'amplada de banda (amb iperf3), basant-se exclusivament en les comandes i configuracions del document proporcionat.
 
-# AUDIO
+# 🎧 AUDIO – Guia de Configuració del Servidor
 
-## Pàgina 1: Instal·lació de paquets per al servidor d'àudio
+---
 
-**Objectiu**: Preparar el sistema per al servidor d'àudio amb Icecast2 i eines relacionades.
+## 📄 Pàgina 1: Instal·lació de paquets per al servidor d'àudio
 
-**Passos**:
+**🎯 Objectiu**: Preparar el sistema per al servidor d'àudio amb Icecast2 i eines relacionades.
+
+### 🔧 Passos:
+
 1. **Instal·lació de paquets**:
    ```bash
    sudo apt install icecast2 nginx libnginx-mod-rtmp ffmpeg iperf3 htop -y
@@ -613,12 +629,14 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Modifica `/etc/default/icecast2` per habilitar l'inici automàtic d'Icecast2.
    - **Acció**: Executar la comanda per activar el servei.
 
+---
 
-## Pàgina 2: Configuració del servidor Icecast2
+## 📄 Pàgina 2: Configuració del servidor Icecast2
 
-**Objectiu**: Configurar els paràmetres d'Icecast2 per a connexions d'àudio.
+**🎯 Objectiu**: Configurar els paràmetres d'Icecast2 per a connexions d'àudio.
 
-**Passos**:
+### 🔧 Passos:
+
 1. **Edició de la configuració d'Icecast2**:
    ```xml
    <limits>
@@ -632,13 +650,18 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Estableix 100 clients màxims, 5 fonts d'àudio, cua de 524288 bytes, temps d'espera de clients de 30 segons i de capçaleres de 15 segons a `/etc/icecast2/icecast.xml`.
    - **Acció**: Editar el fitxer amb un editor com `nano` i afegir/modificar la secció `<limits>`.
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotoaudio3.png)
+<div align="center">
+  <img src="fotosaudiovideo/fotoaudio3.png" alt="Configuració de Icecast2" />
+</div>
 
-## Pàgina 3: Configuració del tallafocs i inici de DarkIce
+---
 
-**Objectiu**: Obrir ports per a Icecast2 i iniciar el streaming amb DarkIce.
+## 📄 Pàgina 3: Configuració del tallafocs i inici de DarkIce
 
-**Passos**:
+**🎯 Objectiu**: Obrir ports per a Icecast2 i iniciar el streaming amb DarkIce.
+
+### 🔧 Passos:
+
 1. **Obertura de ports al tallafocs**:
    ```bash
    sudo ufw allow 8000/tcp
@@ -653,36 +676,50 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    ```
    - **Descripció**: Inicia DarkIce per enviar fluxos d'àudio a Icecast2 usant `/etc/darkice.cfg`.
    - **Acció**: Executar la comanda per iniciar el streaming.
-   
-## Inici i executar Icecast i l'audio
 
-**Objectiu**: Executar Icecast i fer la comprovació que funciona l'audio
+---
 
-**Passos**:
+## ▶️ Inici i execució d'Icecast i l'àudio
+
+**🎯 Objectiu**: Executar Icecast i fer la comprovació que funciona l'àudio.
+
+### 🔧 Passos:
+
 1. **Execució de la comanda de transmissió**:
-   
-**La comanda reprodueix en temps real l'arxiu live.mp3 i l’envia com a streaming d’àudio MP3 a un servidor Icecast a través d'internet.**
+   - **Descripció**: La comanda reprodueix en temps real l'arxiu `live.mp3` i l’envia com a streaming d’àudio MP3 a un servidor Icecast a través d'internet.
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotovideo2.png)
+<div align="center">
+  <img src="fotosaudiovideo/fotovideo2.png" alt="Comanda de transmissió d'àudio" />
+</div>
 
-3. **Posar a la URL la ruta necessaria**:
+2. **Posar a la URL la ruta necessària**:
    ```bash
    http://LA_IP_CORRESPONENT:8000
    ```
-4. **Si hem fet tot bé, hauria de sortir la pagina d'Icecast**
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotoaudio9.png)
+3. **Si hem fet tot bé, hauria de sortir la pàgina d'Icecast:**
 
-4. **Seguidament posem la mateixa URL, pero aquest cop afegint /stream després del :8000 per fer servir l'audio**
+<div align="center">
+  <img src="fotosaudiovideo/fotoaudio9.png" alt="Pàgina principal d'Icecast" />
+</div>
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotoaudio10.png)
+4. **Per escoltar l'àudio en directe, afegim `/stream` a la URL**:
+   ```bash
+   http://LA_IP_CORRESPONENT:8000/stream
+   ```
 
+<div align="center">
+  <img src="fotosaudiovideo/fotoaudio10.png" alt="Streaming de l'àudio" />
+</div>
 
-## Pàgina 4: Actualització del sistema
+---
 
-**Objectiu**: Actualitzar el sistema per assegurar la versió més recent dels paquets.
+## 📄 Pàgina 4: Actualització del sistema
 
-**Passos**:
+**🎯 Objectiu**: Actualitzar el sistema per assegurar la versió més recent dels paquets.
+
+### 🔧 Passos:
+
 1. **Actualització de paquets**:
    ```bash
    sudo apt update && sudo apt upgrade
@@ -690,13 +727,18 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Actualitza la llista de paquets (`apt update`) i instal·la les versions més recents (`apt upgrade`) des dels repositoris d'Ubuntu.
    - **Acció**: Executar la comanda per mantenir el sistema actualitzat.
 
-# VÍDEO
+---
 
-## Pàgina 5: Configuració del servidor de streaming de vídeo
+# 📹 VÍDEO – Configuració del servidor de streaming
 
-**Objectiu**: Configurar Nginx per a streaming de vídeo en directe i sota demanda.
+---
 
-**Passos**:
+## 📄 Pàgina 5: Configuració del servidor de streaming de vídeo
+
+**🎯 Objectiu**: Configurar Nginx per a streaming de vídeo en directe i sota demanda.
+
+### 🔧 Passos:
+
 1. **Creació del directori per a vídeos**:
    ```bash
    sudo mkdir -p /var/www/html/videos
@@ -717,10 +759,12 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
        server {
            listen 1935;
            chunk_size 4096;
+
            application live {
                live on;
                record off;
            }
+
            application vod {
                play /var/www/html/videos;
            }
@@ -729,31 +773,41 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    ```
    - **Descripció**: Configura Nginx per a streaming RTMP al port 1935, amb suport per a streaming en directe (`live`) i sota demanda (`vod`) des de `/var/www/html/videos`.
    - **Acció**: Afegir aquesta configuració al fitxer de Nginx i reiniciar el servei.
-  
-   
-4. **Configuració de Nginx RTMP**:
 
-**Objectiu**: Executar RTPM i fer la comprovació que funciona el video
+---
 
-**Passos**:
+## ▶️ Execució i comprovació del vídeo
+
+**🎯 Objectiu**: Executar RTMP i comprovar que funciona el vídeo.
+
+### 🔧 Passos:
+
 1. **Execució de la comanda de transmissió**:
-   
-**Aquesta comanda de ffmpeg serveix per enviar un vídeo MP4 com a stream en directe cap a un servidor RTMP.**
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotovideo10.png)
+- **Descripció**: Aquesta comanda de `ffmpeg` serveix per enviar un vídeo MP4 com a stream en directe cap a un servidor RTMP.
 
-2. **Hem d'anar al reproductor multimedia VLC i clicar a obrir un flux de xarxa**
+<div align="center">
+  <img src="fotosaudiovideo/fotovideo10.png" alt="Comanda de transmissió de vídeo" />
+</div>
 
-**Aquest pas serveix per reproduir en VLC un vídeo en directe emès per RTMP, hem de posar la URL per obrir el flux de xarxa**
+2. **Obrir un flux de xarxa al VLC**:
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotovideo4.png)
+- **Descripció**: Aquest pas serveix per reproduir en VLC un vídeo en directe emès per RTMP. Hem de posar la URL per obrir el flux de xarxa (ex: `rtmp://<IP_DEL_SERVIDOR>/live`).
 
-3. **Si ho hem fet tot bé, hauria d'aparèixer el video en questió, també es pot canviar l'ordre, primer obrir el flux de xarxa i després la comanda de transmissió.**
+<div align="center">
+  <img src="fotosaudiovideo/fotovideo4.png" alt="Obrir flux RTMP a VLC" />
+</div>
 
-**Pot ser que haguem de clicar el botó de PLAY uns quants cops, ja que a vegades triga una mica**
+3. **Visualització del vídeo**:
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotovideo5.png)
+- **Descripció**: Si ho hem fet tot bé, hauria d'aparèixer el vídeo en qüestió. També es pot fer a l'inrevés: primer obrir el flux de xarxa i després executar la comanda de transmissió.
+- **Nota**: Pot ser que hàgim de clicar el botó de PLAY uns quants cops, ja que a vegades triga una mica a començar.
 
+<div align="center">
+  <img src="fotosaudiovideo/fotovideo5.png" alt="Visualització de vídeo en directe" />
+</div>
+
+---
 
 
 # COMPROVACIÓ D'AMPLE DE BANDA
@@ -772,8 +826,7 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
 
 2. **Per assegurar que funcioni, hem de configurar els ports del security group de l'instància**
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda2.png)
-
+<center><img src="fotosaudiovideo/fotoampledebanda2.png" alt="Configuració ports"></center>
 
 
 ## Pàgina 8: Prova d'amplada de banda amb iperf3
@@ -789,7 +842,7 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
      
    - **Acció**: Executar la comanda i analitzar els resultats per verificar la capacitat de la xarxa.
 
-![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda3.png)
+<center><img src="fotosaudiovideo/fotoampledebanda3.png" alt="Prova iperf3 servidor"></center>
 
 2. **Prova amb iperf3 -c**:
    ```bash
@@ -798,8 +851,8 @@ Aquest document detalla els passos per implementar un servidor d'àudio (Icecast
    - **Descripció**: Executa iperf3 en mode client per connectar-se al servidor 44.202.106.60 (port 5201). Els resultats mostren una transferència de 1.14 GBytes a 977 Mbits/s de mitjana en 10.04 segons.
      
    - **Acció**: Executar la comanda i analitzar els resultats per verificar la capacitat de la xarxa.
-
-![Veure imatge de la ubicació](fotosaudiovideo/fotoampledebanda4.png)
+   
+<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
 
 
 <!-- Parte server Diego -->
@@ -817,7 +870,7 @@ Instal·lar amb:
 sudo apt install nginx
 ```
 
-[Ver captura de instalación](ruta/a/imagen1.png)
+<center><img src="ruta/a/imagen1.png" alt="Instal·lació nginx"></center>
 
 ---
 
@@ -826,15 +879,17 @@ sudo apt install nginx
 Editem l’arxiu de configuració perquè sàpiga on està l'HTML i per on escoltarà.  
 També activem el site i ja tindríem operativa la pàgina web.
 
-[Ver captura configuración 1](ruta/a/imagen2.png)  
-[Ver captura configuración 2](ruta/a/imagen3.png)  
-[Ver captura configuración 3](ruta/a/imagen4.png)
+<center><img src="ruta/a/imagen2.png" alt="Configuració 1"></center>
+
+<center><img src="ruta/a/imagen3.png" alt="Configuració 2"></center>
+
+<center><img src="ruta/a/imagen4.png" alt="Configuració 3"></center>
 
 ---
 
 ### **Comprovació**
 
-[Ver comprovació web](ruta/a/imagen5.png)
+<center><img src="ruta/a/imagen5.png" alt="Comprovació web"></center>
 
 ---
 
@@ -845,14 +900,21 @@ Instal·lem el servei FTP:
 ```bash
 sudo apt install proftpd -y
 ```
-Al directori li donem només permisos de lectura ja que l'ftp només serà per llegir fitxers d’anuncis de l’empresa, per descarregar coses que publiquem o descarregar arxius importants
-[Ver instal·lació FTP](ruta/a/imagen6.png)  
-[Ver configuració FTP](ruta/a/imagen7.png)  
-[Ver usuaris FTP](ruta/a/imagen8.png)  
-[Ver configuració usuaris](ruta/a/imagen9.png)  
-[Ver permisos FTP](ruta/a/imagen10.png)  
-[Ver exemple d'ús](ruta/a/imagen11.png)  
-[Ver comprovació FTP](ruta/a/imagen12.png)
+Al directori li donem només permisos de lectura ja que l'ftp només serà per llegir fitxers d’anuncis de l’empresa, per descarregar coses que publiquem o descarregar arxius importants.
+
+<center><img src="ruta/a/imagen6.png" alt="Instal·lació FTP"></center>
+
+<center><img src="ruta/a/imagen7.png" alt="Configuració FTP"></center>
+
+<center><img src="ruta/a/imagen8.png" alt="Usuaris FTP"></center>
+
+<center><img src="ruta/a/imagen9.png" alt="Configuració usuaris"></center>
+
+<center><img src="ruta/a/imagen10.png" alt="Permisos FTP"></center>
+
+<center><img src="ruta/a/imagen11.png" alt="Exemple d'ús"></center>
+
+<center><img src="ruta/a/imagen12.png" alt="Comprovació FTP"></center>
 
 ---
 
@@ -866,23 +928,30 @@ sudo apt install samba -y
 ```
 Crearem una carpeta on engabiarem als usuaris per només poder tenir accés a aquell directori i subdirectori i a l'arxiu indiquem que directori
 
-[Ver instal·lació Samba](ruta/a/imagen13.png)  
-[Ver configuració carpeta](ruta/a/imagen14.png)  
-[Ver arxiu configuració](ruta/a/imagen15.png)  
-[Ver comprovació samba](ruta/a/imagen16.png)
+<center><img src="ruta/a/imagen13.png" alt="Instal·lació Samba"></center>
 
+<center><img src="ruta/a/imagen14.png" alt="Configuració carpeta"></center>
+
+<center><img src="ruta/a/imagen15.png" alt="Arxiu configuració"></center>
+
+<center><img src="ruta/a/imagen16.png" alt="Comprovació Samba"></center>
 ---
 
 ## **EXTRA: CONTROL DE CANVIS PER DISCORD**
 
 ### **Instal·lació de dependències**
 
-[Ver dependències](ruta/a/imagen17.png)  
-[Ver script servei](ruta/a/imagen18.png)
+<center><img src="ruta/a/imagen17.png" alt="Dependències"></center>
+
+<center><img src="ruta/a/imagen18.png" alt="Script servei"></center>
 
 ### **Configuració i comprovació**
 Configurem un script per que escolti el que esta pasant al samba indicant la carpeta, i el fem un servei perquè s’executi constantment.
-[Ver script escoltant](ruta/a/imagen19.png)  
-[Ver execució final](ruta/a/imagen20.png)  
-[Ver comprovació canvis](ruta/a/imagen21.png)  
-[Ver alerta Discord](ruta/a/imagen22.png)
+
+<center><img src="ruta/a/imagen19.png" alt="Script escoltant"></center>
+
+<center><img src="ruta/a/imagen20.png" alt="Execució final"></center>
+
+<center><img src="ruta/a/imagen21.png" alt="Comprovació canvis"></center>
+
+<center><img src="ruta/a/imagen22.png" alt="Alerta Discord"></center>
