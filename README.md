@@ -270,7 +270,38 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 6. SAI UPS
 7. NAS**
 
+#### Plànol de la sala del CPD
 
+<p align="center">
+  <img src="fotos/fotosSRV/{25A99ECA-52B9-48A5-A7D8-AAC8AB5C0F65}.png" alt="Plano Seguridad">
+</p> 
+
+#### Diagrama de flux de seguretat
+<p align="center">
+  <img src="fotos/fransicks/diagram1.png" alt="Diagrama de flux de seguretat">
+</p> 
+
+#### Diagrama de videovigilància
+<p align="center">
+  <img src="fotos/fransicks/diagram2.png" alt="Connexió entre servidors i switches">
+</p> 
+
+
+#### Diagrama del sistema antiincendis
+
+<p align="center">
+  <img src="fotos/fransicks/Diagrama Fuego.png" alt="Connexió entre servidors i switches">
+</p> 
+
+### Fotografies
+  - Portes de seguretat amb biometria
+<p align="center">
+  <img src="fotos/fransicks/Captura de pantalla 2025-05-29 225559.png" alt="Connexió entre servidors i switches">
+</p> 
+  - Càmeres instal·lades
+<p align="center">
+  <img src="fotos/fransicks/Captura de pantalla 2025-05-29 225433.png" alt="Connexió entre servidors i switches">
+</p> 
 ---
 
 
@@ -596,41 +627,6 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 
 ## 5. Diagrames, Planells i Fotografies
-
-### Planells
-
-#### Plànol de la sala del CPD
-
-<p align="center">
-  <img src="fotos/fotosSRV/{25A99ECA-52B9-48A5-A7D8-AAC8AB5C0F65}.png" alt="Connexió entre servidors i switches">
-</p> 
-
-#### Diagrama de flux de seguretat
-<p align="center">
-  ![diagram1](https://github.com/user-attachments/assets/77f1aef2-66b0-4fc6-8fae-3644f26e03db)
-</p> 
-
-#### Diagrama de videovigilància
-<p align="center">
-  ![diagram2](https://github.com/user-attachments/assets/767e8c1c-db82-4274-9967-671aeda46c44)
-</p> 
-
-
-#### Diagrama del sistema antiincendis
-
-<p align="center">
-  ![Diagrama Fuego](https://github.com/user-attachments/assets/d3a32ba1-5626-4ee7-8017-3d453024b984)
-</p> 
-
-### Fotografies
-  - Portes de seguretat amb biometria
-<p align="center">
-  ![image](https://github.com/user-attachments/assets/05ef1c08-d6dc-41f0-9f9f-d3beaed14ba9)
-</p>
-  - Càmeres instal·lades
-<p align="center">
-  ![image](https://github.com/user-attachments/assets/737e6320-6cd8-4063-81bf-f14287448b39)
-</p>
 
 # Seguretat Lògica
 
