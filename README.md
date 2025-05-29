@@ -130,9 +130,7 @@ Cada rack inclou:
 
 Aquesta estructura facilita el manteniment, millora l’eficiència energètica i permet escalar la infraestructura segons necessitats.
 
-<p align="center">
-  <img src="fotos/fotosSRV/fotoESTRUCTURAsrv.png" alt="Distribució de racks i cablejat">
-</p> 
+c
 
 1. SERVER  
 2. SWITCH  
@@ -750,10 +748,6 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 - Aquests equips ofereixen el mateix rendiment amb menor consum elèctric i generen menys calor, reduint la necessitat de refrigeració.
 
 
-# Pas a pas per a la implementació de servidors d'àudio i vídeo
-
-Aquest document detalla els passos per implementar un servidor d'àudio (Icecast2), un servidor de streaming de vídeo (Nginx amb mòdul RTMP) i comprovacions d'amplada de banda (amb iperf3), basant-se exclusivament en les comandes i configuracions del document proporcionat.
-
 # 🎧 AUDIO – Guia de Configuració del Servidor
 
 ---
@@ -1074,8 +1068,6 @@ sudo apt install proftpd -y
 ```
 Al directori li donem només permisos de lectura ja que l'ftp només serà per llegir fitxers d’anuncis de l’empresa, per descarregar coses que publiquem o descarregar arxius importants.
 
-Aquí tens totes les imatges amb el format `<div align="center">` aplicat correctament, i també he corregit el tercer `img` que tenia una cometa tancada mal posada:
-
 <div align="center">
   <img src="fotos/fotosEC21/ftp1.png" alt="ftp1" />
 </div>
@@ -1099,8 +1091,6 @@ Aquí tens totes les imatges amb el format `<div align="center">` aplicat correc
 <div align="center">
   <img src="fotos/fotosEC21/ftp6.png" alt="ftp1" />
 </div>
-
-Quan vulguis, segueixo amb més!
 
 
 ---
@@ -1178,21 +1168,279 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
 
 ## **FAIL2BAN:**
 
-<div align="center">
-  <img src="fotos/fotosEC21/fail2ban1.png" alt="fail2bant" />
-</div>
 
-<div align="center">
-  <img src="fotos/fotosEC21/fail2ban2.png" alt="fail2ban" />
-</div>
+---
+Manual de Configuración de Fail2Ban para Nginx
+==============================================
 
-<div align="center">
-  <img src="fotos/fotosEC21/fail2ban3.png" alt="fail2ban" />
-</div>
+Introducción
+------------
 
-<div align="center">
-  <img src="fotos/fotosEC21/fail2ban4.png" alt="fail2ban" />
-</div>
+Este manual describe cómo configurar **Fail2Ban** en un servidor Ubuntu para proteger un servidor **Nginx** (IP: `172.31.204.78`) contra ataques **DDoS** y **SQL Injection**. Fail2Ban monitorea los logs de acceso de Nginx, bloquea IPs maliciosas y envía notificaciones a un webhook de Discord indicando el tipo de ataque detectado.
+
+Requisitos
+----------
+
+-   Servidor Ubuntu con Nginx instalado.
+-   Acceso con permisos de `sudo`.
+-   Logs de Nginx en `/var/log/nginx/access.log`.
+-   Webhook de Discord para notificaciones.
+
+Instalación de Fail2Ban
+-----------------------
+
+1.  Actualiza el sistema e instala Fail2Ban:
+
+    ```
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install fail2ban -y
+
+    ```
+
+2.  Inicia y habilita el servicio:
+
+    ```
+    sudo systemctl start fail2ban
+    sudo systemctl enable fail2ban
+    sudo systemctl status fail2ban
+
+    ```
+
+
+fotos/fotosEC21/fail2ban2.png
+Configuración de Fail2Ban
+-------------------------
+
+### 1\. Configurar Filtros
+
+Se crearon dos filtros para detectar ataques específicos en los logs de Nginx.
+
+#### Filtro para DDoS (`nginx-ddos`)
+
+1.  Crea el filtro:
+
+    ```
+    sudo nano /etc/fail2ban/filter.d/nginx-ddos.conf
+
+    ```
+
+2.  Contenido:
+
+    ```
+    [Definition]
+    failregex = ^<HOST> -.*"(GET|POST|HEAD).*HTTP.*$
+    ignoreregex =
+
+    ```
+
+    -   Detecta solicitudes HTTP repetitivas (GET, POST, HEAD) que indican un posible ataque DDoS.
+
+#### Filtro para SQL Injection (`nginx-sql-injection`)
+
+1.  Crea el filtro:
+
+    ```
+    sudo nano /etc/fail2ban/filter.d/nginx-sql-injection.conf
+
+    ```
+
+2.  Contenido:
+
+    ```
+    [Definition]
+    failregex = ^<HOST> -.*"(GET|POST).*(union|select|insert|delete|drop|1=1|--|\'|").*HTTP.*$
+    ignoreregex =
+
+    ```
+
+    -   Detecta solicitudes HTTP con palabras clave de SQL Injection (por ejemplo, `union`, `select`, `1=1`).
+3.  Prueba los filtros con los logs de Nginx:
+
+    ```
+    sudo fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-ddos.conf
+    sudo fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-sql-injection.conf
+
+    ```
+
+### 2\. Configurar Jails
+
+Los jails definen cómo Fail2Ban responde a los ataques detectados.
+
+1.  Edita el archivo de jails:
+
+    ```
+    sudo nano /etc/fail2ban/jail.local
+
+    ```
+
+2.  Contenido:
+
+    ```
+    [DEFAULT]
+    bantime = 3600
+    findtime = 600
+    maxretry = 5
+    action = %(action_)s
+             discord-notify
+
+    [nginx-ddos]
+    enabled = true
+    port = http,https
+    filter = nginx-ddos
+    logpath = /var/log/nginx/access.log
+    maxretry = 100
+    bantime = 3600
+    findtime = 60
+    action = %(action_)s
+             discord-notify
+
+    [nginx-sql-injection]
+    enabled = true
+    port = http,https
+    filter = nginx-sql-injection
+    logpath = /var/log/nginx/access.log
+    maxretry = 3
+    bantime = 86400
+    findtime = 600
+    action = %(action_)s
+             discord-notify
+
+    ```
+
+    -   **Parámetros**:
+        -   `bantime`: Duración del bloqueo (3600 segundos = 1 hora, 86400 segundos = 24 horas).
+        -   `findtime`: Ventana de tiempo para contar intentos (600 segundos = 10 minutos, 60 segundos = 1 minuto).
+        -   `maxretry`: Número máximo de intentos antes de bloquear (100 para DDoS, 3 para SQL Injection).
+        -   `logpath`: Ruta al log de Nginx.
+        -   `action`: Usa la acción predeterminada (`%(action_)s`) más la notificación a Discord.
+
+### 3\. Configurar Notificaciones a Discord
+
+Se creó una acción personalizada para enviar notificaciones a Discord, indicando si el bloqueo es por DDoS o SQL Injection.
+
+#### Crear el Script de Notificación
+
+1.  Crea el script:
+
+    ```
+    sudo nano /etc/fail2ban/action.d/discord-notify.sh
+
+    ```
+
+2.  Contenido:
+
+    ```
+    #!/bin/bash
+    WEBHOOK_URL="https://discord.com/api/webhooks/1376445623745904701/eaCwi_8-cdpul8g-iGpTGj5yo9o-7mGkJhfE4J7eKbbuCNyMVOWfiEwJJCg5-c8axAoP"
+    IP=$1
+    JAIL=$2
+    if [[ "$JAIL" == "nginx-ddos" ]]; then
+        ATTACK_TYPE="DDoS"
+    elif [[ "$JAIL" == "nginx-sql-injection" ]]; then
+        ATTACK_TYPE="SQL Injection"
+    else
+        ATTACK_TYPE="Unknown"
+    fi
+    MESSAGE="Fail2Ban Alert: IP $IP has been banned due to a $ATTACK_TYPE attack by jail $JAIL on $(hostname) at $(date)"
+    curl -X POST -H "Content-Type: application/json"\
+         -d "{\"content\": \"$MESSAGE\"}"\
+         $WEBHOOK_URL
+
+    ```
+
+    -   **Explicación**:
+        -   Determina el tipo de ataque (`DDoS` o `SQL Injection`) según el jail.
+        -   Envía un mensaje al webhook de Discord con la IP bloqueada, tipo de ataque, nombre del jail, hostname y fecha.
+3.  Asigna permisos:
+
+    ```
+    sudo chmod +x /etc/fail2ban/action.d/discord-notify.sh
+
+    ```
+
+#### Crear la Acción de Fail2Ban
+
+1.  Crea el archivo de acción:
+
+    ```
+    sudo nano /etc/fail2ban/action.d/discord-notify.conf
+
+    ```
+
+2.  Contenido:
+
+    ```
+    [Definition]
+    actionstart =
+    actionstop =
+    actioncheck =
+    actionban = /etc/fail2ban/action.d/discord-notify.sh <ip> <name>
+    actionunban =
+
+    ```
+
+    -   Usa `<ip>` y `<name>` para pasar la IP bloqueada y el nombre del jail al script.
+
+### 4\. Resolución de Errores
+
+Durante la configuración, se encontró un error:
+
+```
+ERROR: Failed during configuration: Bad value substitution: option 'actionban' in section 'Definition' contains an interpolation key 'ip'...
+
+```
+
+**Causa**: Uso incorrecto de `%(ip)s` y `%(jail)s` en `discord-notify.conf`.
+
+**Solución**:
+
+-   Reemplazamos `%(ip)s` y `%(jail)s` por `<ip>` y `<name>` en `discord-notify.conf`, usando la sintaxis nativa de Fail2Ban para variables.
+-   Probamos la configuración:
+
+    ```
+    sudo fail2ban-client -t
+
+    ```
+
+-   Reiniciamos Fail2Ban:
+
+    ```
+    sudo systemctl restart fail2ban
+
+    ```
+
+### 5\. Pruebas
+
+#### Probar Detección de DDoS
+
+1.  Simula un ataque DDoS enviando múltiples solicitudes HTTP:
+
+    ```
+    for i in {1..150}; do curl -s http://172.31.204.100/; done
+
+    ```
+<p align="center">
+  <img src="fotos/fotosEC21/fail2ban4.png" alt="Distribució de racks i cablejat">
+</p> 
+
+2.  Verifica el bloqueo:
+
+ ![image](https://github.com/user-attachments/assets/21ca1f2a-af81-4b47-91d2-87c1c75701ee)
+
+
+3.  Confirma la notificación en Discord:
+
+    ```
+    Fail2Ban Alert: IP <TEST_IP> has been banned due to a DDoS attack by jail nginx-ddos on ip-172-31-204-100 at <timestamp>
+
+    ```
+
+4.  Desbloquea la IP:
+
+    ```
+    sudo fail2ban-client unban <TEST_IP>
+
+    ```
 
 
 ## **DUCKDNS ON PREMISE:**
@@ -1208,6 +1456,8 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
 <div align="center">
   <img src="fotos/fransicks/duckdns3.png" alt="duckdns" />
 </div>
+
+
 
 ---
 
