@@ -128,7 +128,7 @@ Cada rack inclou:
 Aquesta estructura facilita el manteniment, millora l’eficiència energètica i permet escalar la infraestructura segons necessitats.
 
 <p align="center">
-  <img src="fotosaudiovideo/fotoESTRUCTURAsrv.png" alt="Distribució de racks i cablejat">
+  <img src="fotos/fotosSRV/fotoESTRUCTURAsrv.png" alt="Distribució de racks i cablejat">
 </p> 
 
 # Infraestructura IT
@@ -165,11 +165,11 @@ Per desenvolupar aquesta proposta, s’han investigat les tendències actuals en
 Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simultànies amb un rendiment alt, mantenint l’eficiència energètica i escalabilitat modular (ODS 9).
 
 <p align="center">
-  <img src="fotosaudiovideo/fotoTIPUSrack.png" alt="Distribució de racks i cablejat">
+  <img src="fotos/fotosSRV/fotoTIPUSrack.png" alt="Distribució de racks i cablejat">
 </p> 
 
 <p align="center">
-  <img src="fotosaudiovideo/fotoTIPUSrack2.png" alt="Distribució de racks i cablejat">
+  <img src="fotos/fotosSRV/fotoTIPUSrack2.png" alt="Distribució de racks i cablejat">
 </p> 
 
 ---
