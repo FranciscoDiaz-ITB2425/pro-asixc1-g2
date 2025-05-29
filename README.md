@@ -868,8 +868,7 @@ Instal·lar amb:
 ```bash
 sudo apt install nginx
 ```
-
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/1.png" alt="nginx1"></center>
 
 ---
 
@@ -878,16 +877,17 @@ sudo apt install nginx
 Editem l’arxiu de configuració perquè sàpiga on està l'HTML i per on escoltarà.  
 També activem el site i ja tindríem operativa la pàgina web.
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/2.png" alt="ngix2"></center>
+<center><img src="fotos/fotosEC21/3.png" alt="ngix3"></center>
+<center><img src="fotos/fotosEC21/4.png" alt="ngix4"></center>
+<center><img src="fotos/fotosEC21/5.png" alt="nginx5"></center>
 
 ---
 
 ### **Comprovació**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-
+<center><img src="fotos/fotosEC21/6.png" alt="nginx6"></center>
+<center><img src="fotos/fotosEC21/7.png" alt="nginx7"></center>
 ---
 
 ## **SERVEI FTP**
@@ -899,19 +899,17 @@ sudo apt install proftpd -y
 ```
 Al directori li donem només permisos de lectura ja que l'ftp només serà per llegir fitxers d’anuncis de l’empresa, per descarregar coses que publiquem o descarregar arxius importants.
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/ftp1.png" alt="ftp1"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/ftp2.png" alt="ftp1"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/ftp3.png alt="ftp1"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/ftp4.png" alt="ftp1"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/ftp5.png" alt="ftp1"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/ftp6.png" alt="ftp1"></center>
 
 ---
 
@@ -925,49 +923,54 @@ sudo apt install samba -y
 ```
 Crearem una carpeta on engabiarem als usuaris per només poder tenir accés a aquell directori i subdirectori i a l'arxiu indiquem que directori
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/samba1.png" alt="samba1"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/samba2.png" alt="samba2"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/samba3.png" alt="samba3"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/samba4.png" alt="samba4"></center>
+
+<center><img src="fotos/fotosEC21/samba5.png" alt="samba5"></center>
+
 ---
 
 ## **EXTRA: CONTROL DE CANVIS PER DISCORD**
 
 ### **Instal·lació de dependències**
 
-<center><img src="ruta/a/imagen17.png" alt="Dependències"></center>
+<center><img src="fotos/fotosEC21/discord1.png" alt="discord"></center>
 
-<center><img src="ruta/a/imagen18.png" alt="Script servei"></center>
+<center><img src="fotos/fotosEC21/discord2.png" alt="discord"></center>
 
 ### **Configuració i comprovació**
 Configurem un script per que escolti el que esta pasant al samba indicant la carpeta, i el fem un servei perquè s’executi constantment.
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/discord3.png" alt="discord"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/discord4.png" alt="discord"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/discord5.png" alt="discord"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/discord6.png" alt="discord"></center>
+
+<center><img src="fotos/fotosEC21/discord7.png" alt="discord"></center>
 
 
 # **EC21-2:**
 
 ## **FAIL2BAN:**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotosEC21/fail2ban1.png" alt="fail2bant"></center>
+<center><img src="fotos/fotosEC21/fail2ban2.png" alt="fail2ban"></center>
+<center><img src="fotos/fotosEC21/fail2ban3.png" alt="fail2ban"></center>
+<center><img src="fotos/fotosEC21/fail2ban4.png" alt="fail2ban"></center>
 
 ## **DUCKDNS ON PREMISE:**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fransicks/duckdns1.png" alt="duckdns"></center>
+<center><img src="fotos/fransicks/duckdns2.png" alt="duckdns"></center>
+<center><img src="fotos/fransicks/duckdns3.png" alt="duckdns"></center>
 ---
 
 # **EC22:**
@@ -1045,24 +1048,22 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
              \- Salari Total  
              \- Període de Prova  
              \- Dies de Vacances  
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
-
+<center><img src="fotos/fotosEC22/fotoBBDD1.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD2.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD3.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD4.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD5.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD6.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD7.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD8.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD9.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD10.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD11.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD12.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD13.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD14.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD15.png" alt="BBDD"></center>
+<center><img src="fotos/fotosEC22/fotoBBDD16.png" alt="BBDD"></center>
 
 
 **Investigar i comparar eficiència energètica amb altres proveïdors del núvol. Com els diferents proveïdors ofereixen solucions de CPD administrats per aquestes empreses i com donen cobertura als requeriments exposats anteriorment.**
@@ -1085,41 +1086,41 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
 
 per assignar una ip elastica hem d’anar a xarxa i seguretat i clicar a direccions ip elastiques. 
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto1.png" alt="Prova iperf3 client"></center>
 
 després hem de clicar a ASSIGNAR DIRECCION IP ELASTICA per crear una ip per assignar.
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto2.png" alt="Prova iperf3 client"></center>
 
 **cliquem a assignar**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto3.png" alt="Prova iperf3 client"></center>
 
 **i ja tindrem una ip elastica, ara només falta assignar-la a l’instancia adequada**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto4.png" alt="Prova iperf3 client"></center>
 
 **cliquem a l’IP i despres a DIrecció IP elastica associada.**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto5.png" alt="Prova iperf3 client"></center>
 
 **aqui, el que farem es assignar l’IP elastica a l’instancia que pertoca, en aquest cas posem l’instancia EC23**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto6.png" alt="Prova iperf3 client"></center>
 
 **després posem l’IP privada que té la instància** 
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto7.png" alt="Prova iperf3 client"></center>
 
 **i cliquem a associar**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto8.png" alt="Prova iperf3 client"></center>
 
 **per comprovar que ha funcionat hem d’anar a Instàncies i clicar a la instància a la qual hem assignat l’IP, i podrem comprovar que ja l’hem assignat.**
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto9.png" alt="Prova iperf3 client"></center>
 
-<center><img src="fotosaudiovideo/fotoampledebanda4.png" alt="Prova iperf3 client"></center>
+<center><img src="fotos/fotoselastic/foto10.png" alt="Prova iperf3 client"></center>
 
 
 # Disseny i implementació d’una base de dades
