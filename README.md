@@ -1369,14 +1369,26 @@ La taula **Grups_Nivell** recull la remuneració bruta anual, indicada a la colu
 
 A continuació es detallen els salaris corresponents a cada grup-nivell, que reflecteixen la compensació econòmica assignada segons la responsabilitat i experiència esperada:
 
-| Grup-Nivell | Salari Total Anual (€) |
-|-------------|-----------------------:|
-| A1          | 50.000,00 €            |
-| A2          | 45.000,00 €            |
-| B1          | 38.000,00 €            |
-| B2          | 34.000,00 €            |
-| C1          | 28.000,00 €            |
-| C2          | 24.000,00 €            |
+<div align="center">
+
+<table style="width:60%; font-size:1.1em; border-collapse: collapse;" border="1" cellpadding="8">
+  <thead style="background-color:#f2f2f2;">
+    <tr>
+      <th>Grup-Nivell</th>
+      <th>Salari Total Anual (€)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="center">A1</td><td align="right">50.000,00 €</td></tr>
+    <tr><td align="center">A2</td><td align="right">45.000,00 €</td></tr>
+    <tr><td align="center">B1</td><td align="right">38.000,00 €</td></tr>
+    <tr><td align="center">B2</td><td align="right">34.000,00 €</td></tr>
+    <tr><td align="center">C1</td><td align="right">28.000,00 €</td></tr>
+    <tr><td align="center">C2</td><td align="right">24.000,00 €</td></tr>
+  </tbody>
+</table>
+
+</div>
 
 ---
 
@@ -1386,16 +1398,26 @@ El període de prova és el temps durant el qual l’empresa pot avaluar la capa
 
 Els períodes de prova assignats per grup-nivell són:
 
-| Grup-Nivell | Durada del Període de Prova |
-|-------------|-----------------------------|
-| A1          | 6 mesos                     |
-| A2          | 6 mesos                     |
-| B1          | 4 mesos                     |
-| B2          | 4 mesos                     |
-| C1          | 3 mesos                     |
-| C2          | 3 mesos                     |
+<div align="center">
 
-Aquest temps permet garantir que tant empresa com treballador disposen d’un marge per confirmar que la relació laboral és adequada.
+<table style="width:60%; font-size:1.1em; border-collapse: collapse;" border="1" cellpadding="8">
+  <thead style="background-color:#f2f2f2;">
+    <tr>
+      <th>Grup-Nivell</th>
+      <th>Durada del Període de Prova</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="center">A1</td><td align="center">6 mesos</td></tr>
+    <tr><td align="center">A2</td><td align="center">6 mesos</td></tr>
+    <tr><td align="center">B1</td><td align="center">4 mesos</td></tr>
+    <tr><td align="center">B2</td><td align="center">4 mesos</td></tr>
+    <tr><td align="center">C1</td><td align="center">3 mesos</td></tr>
+    <tr><td align="center">C2</td><td align="center">3 mesos</td></tr>
+  </tbody>
+</table>
+
+</div>
 
 ---
 
@@ -1405,11 +1427,25 @@ Les vacances anuals constitueixen un dret essencial per al descans i la recupera
 
 Els dies de vacances anuals assignats a cada categoria són:
 
-| Grup-Nivell | Dies de Vacances Anuals |
-|-------------|------------------------:|
-| A1          | 30 dies                 |
-| A2          | 28 dies                 |
-| B1          | 26 dies                 |
-| B2          | 25 dies                 |
-| C1          | 23 dies                 |
-| C2          | 22 dies                 |
+<div align="center">
+
+<table style="width:60%; font-size:1.1em; border-collapse: collapse;" border="1" cellpadding="8">
+  <thead style="background-color:#f2f2f2;">
+    <tr>
+      <th>Grup-Nivell</th>
+      <th>Dies de Vacances Anuals</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="center">A1</td><td align="center">30 dies</td></tr>
+    <tr><td align="center">A2</td><td align="center">28 dies</td></tr>
+    <tr><td align="center">B1</td><td align="center">26 dies</td></tr>
+    <tr><td align="center">B2</td><td align="center">25 dies</td></tr>
+    <tr><td align="center">C1</td><td align="center">23 dies</td></tr>
+    <tr><td align="center">C2</td><td align="center">22 dies</td></tr>
+  </tbody>
+</table>
+
+</div>
+
+---
