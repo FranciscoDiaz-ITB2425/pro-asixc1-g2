@@ -598,7 +598,6 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 - Servidors, switches i sistemes d’emmagatzematge seleccionats per la seva eficiència energètica (etiquetes Energy Star o equivalents).
 - Aquests equips ofereixen el mateix rendiment amb menor consum elèctric i generen menys calor, reduint la necessitat de refrigeració.
-- 
 
 
 # Pas a pas per a la implementació de servidors d'àudio i vídeo
@@ -955,3 +954,5 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
 <center><img src="ruta/a/imagen21.png" alt="Comprovació canvis"></center>
 
 <center><img src="ruta/a/imagen22.png" alt="Alerta Discord"></center>
+
+
