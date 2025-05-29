@@ -229,10 +229,19 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 
 ## Planells i diagrames
 
-📷 **[Vista esquemàtica de la sala del CPD](https://i.imgur.com/EsquemaSalaCPD.jpg)**  
-📷 **[Distribució de racks i cablejat](https://i.imgur.com/DistribucioRacks.jpg)**  
-📷 **[Flux d'aire i refrigeració](https://i.imgur.com/FluxRefrigeracio.jpg)**  
-📷 **[Connexió entre servidors i switches](https://i.imgur.com/ConnexionsSwitches.jpg)**  
+<p align="center">
+  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Vista esquemàtica de la sala del CPD">
+</p>
+<p align="center">
+  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Distribució de racks i cablejat">
+</p> 
+<p align="center">
+  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Flux d'aire i refrigeració">
+</p> 
+<p align="center">
+  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Connexió entre servidors i switches">
+</p>  
+ 
 
 
 # Estudi d'Autonomia del CPD d'Innovate Tech
