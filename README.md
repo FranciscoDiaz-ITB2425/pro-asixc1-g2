@@ -47,9 +47,6 @@ Característiques del sistema:
 
 Inclou un sistema de **detecció de fums VESDA** per a major seguretat.
 
-<p align="center">
-  📷 <a href="URL">Veure esquema del sistema de refrigeració</a>
-</p>
 
 ---
 
@@ -63,10 +60,6 @@ Per evitar la identificació del CPD:
 - **Control biomètric + PIN Pad**
 - **Només personal autoritzat** coneix la ubicació exacta
 
-<p align="center">
-  📷 <a href="URL">Veure imatge de la porta i sistemes de seguretat</a>
-</p>
-
 ---
 
 ## Distribució i gestió del cablejat
@@ -79,9 +72,6 @@ Per garantir ordre i seguretat:
 - **Cables d’alimentació sota terra tècnic**
 - **Etiquetatge i codificació per colors**
 
-<p align="center">
-  📷 <a href="URL">Veure esquema de distribució de cablejat</a>
-</p>
 
 ---
 
@@ -230,14 +220,17 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 ## Planells i diagrames
 
 <p align="center">
-  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Vista esquemàtica de la sala del CPD">
+  <img src="fotosaudiovideo/fotocpd2d.png" alt="VISTA ESQUEMATICA CPD">
 </p>
+
 <p align="center">
   <img src="fotosaudiovideo/fotonauindustrial.png" alt="Distribució de racks i cablejat">
 </p> 
+
 <p align="center">
   <img src="fotosaudiovideo/fotonauindustrial.png" alt="Flux d'aire i refrigeració">
-</p> 
+</p>
+
 <p align="center">
   <img src="fotosaudiovideo/fotonauindustrial.png" alt="Connexió entre servidors i switches">
 </p>  
@@ -1265,26 +1258,28 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
              \- Codi (PK)  
              \- Salari Total  
              \- Període de Prova  
-             \- Dies de Vacances  
-\<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD1.png" alt="BBDD" /\> \</div\>
+             \- Dies de Vacances 
+             
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD1.png" alt="BBDD"> /\> \</div\>
 
 **Pas 1: Connexió al servidor MariaDB/MySQL**
 
+```bash
 mysql \-h 172.31.42.193 \-u web\_user \-p
-
+```
 ---
 
- \<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD2.png" alt="BBDD" /\> \</div\>
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD2.png" alt="BBDD"> /\> \</div\>
 
 **Pas 2: Crear la base de dades i seleccionar-la**
 
 ```sql
-CREATE DATABASE empresa;  
- USE empresa;
-
+CREATE DATABASE inovatech_db;  
+ USE innovatech_db;
+```
 ---
 
- \<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD3.png" alt="BBDD" /\> \</div\>
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD3.png" alt="BBDD"> /\> \</div\>
 
 **Pas 3: Crear la taula Departament**
 
@@ -1294,10 +1289,10 @@ CREATE TABLE Departament (
  Nom VARCHAR(50) NOT NULL,  
  Telefon VARCHAR(15)  
  );
-
+```
 ---
 
- \<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD4.png" alt="BBDD" /\> \</div\>
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD4.png" alt="BBDD"> /\> \</div\>
 
 **Pas 3: Crear la taula Grup\_Nivell**
 
@@ -1308,10 +1303,10 @@ CREATE TABLE Grup\_Nivell (
  Periode\_Prova INT,  
  Dies\_Vacances INT  
  );
-
+```
 ---
 
- \<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD5.png" alt="BBDD" /\> \</div\>
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD5.png" alt="BBDD"> /\> \</div\>
 
 **Pas 3: Crear la taula Empleat amb claus foranes**
 
@@ -1327,7 +1322,7 @@ CREATE TABLE Empleat (
  FOREIGN KEY (Codi\_Departament) REFERENCES Departament(Codi),  
  FOREIGN KEY (Codi\_Grup\_Nivell) REFERENCES Grup\_Nivell(Codi)  
  );
-
+```
 ---
 
 <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD6.png" alt="BBDD" /\> \</div\>
@@ -1339,10 +1334,10 @@ INSERT INTO Departament (Codi, Nom, Telefon) VALUES
  (1, 'Recursos Humans', '934123456'),  
  (2, 'Informàtica', '934123457'),  
  (3, 'Màrqueting', '934123458');
-
+```
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD7.png" alt="BBDD" /\> \</div\>
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD7.png" alt="BBDD"> /\> \</div\>
 
 **Pas 4: Inserir dades a la taula Grup\_Nivell**
 
@@ -1351,11 +1346,10 @@ INSERT INTO Grup\_Nivell (Codi, Salari\_Total, Periode\_Prova, Dies\_Vacances) V
  (1, 30000.00, 90, 30),  
  (2, 45000.00, 60, 25),  
  (3, 60000.00, 30, 20);
-
+```
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD8.png" alt="BBDD" /\> \</div\>
-
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD8.png" alt="BBDD"> /\> \</div\>
 **Pas 4: Inserir dades a la taula Empleat**
 
 ```sql
@@ -1364,6 +1358,7 @@ INSERT INTO Empleat (DNI, Nom, Cognoms, Adreca, Telefon, Codi\_Departament, Codi
  ('87654321B', 'Maria', 'López Martínez', 'Avinguda Diagonal 2, Barcelona', '600123457', 2, 2),  
  ('45678912C', 'Pere', 'Sánchez Gómez', 'Plaça Catalunya 3, Barcelona', '600123458', 3, 3);
 
+```
 ---
 
 <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD9.png" alt="BBDD" /\> \</div\>
@@ -1373,6 +1368,7 @@ INSERT INTO Empleat (DNI, Nom, Cognoms, Adreca, Telefon, Codi\_Departament, Codi
 ```sql
 SELECT \* FROM Departament;
 
+```
 ---
 
 <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD10.png" alt="BBDD" /\> \</div\>
@@ -1382,6 +1378,7 @@ SELECT \* FROM Departament;
 ```sql
 SELECT \* FROM Grup\_Nivell;
 
+```
 ---
 
 <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD11.png" alt="BBDD" /\> \</div\>
@@ -1394,25 +1391,27 @@ SELECT e.DNI, e.Nom, e.Cognoms, d.Nom AS Departament, g.Salari\_Total
  JOIN Departament d ON e.Codi\_Departament \= d.Codi  
  JOIN Grup\_Nivell g ON e.Codi\_Grup\_Nivell \= g.Codi;
 
+```
 ---
 
 <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD12.png" alt="BBDD" /\> \</div\>
 
 **Pas 6: Fer còpia de seguretat de la base de dades**
-
+```bash
 mysqldump \-h 172.31.42.193 \-u web\_user \-p empresa \> empresa\_backup.sql
-
+```
 ---
 
  <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD13.png" alt="BBDD" /\> \</div\>
 
 **Pas 7: Restaurar la base de dades (si cal)**
-
+```bash
 mysql \-h 172.31.42.193 \-u web\_user \-p empresa \< empresa\_backup.sql
-
+```
 ---
 
 <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD14.png" alt="BBDD" /\> \</div\>
+
 
 **Pas 8 (opcional): Consultes addicionals per verificació**
 
@@ -1427,11 +1426,13 @@ Altres consultes SQL útils per comprovacions més específiques.
 ```sql
 SELECT Nom, Cognoms FROM Empleat WHERE Codi\_Departament \= 2;
 
+```
 ---
 
 <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD16.png" alt="BBDD" /\> \</div\>
 
 **Consulta filtrada: Empleats amb salari \> 40000**
+
 
 ```sql
 SELECT Nom, Cognoms FROM Empleat  
@@ -1522,21 +1523,23 @@ després hem de clicar a ASSIGNAR DIRECCION IP ELASTICA per crear una ip per ass
 
 ## Es tracta de dissenyar i implementar una base de dades per la gestió del personal de l’empresa. Els requisits que es demanen són els següents:
 
-\-Els empleats s’identifiquen pel seu DNI. A més hem d’enregistrar el nom, cognoms, adreça i telèfon.  
+Els empleats s’identifiquen pel seu DNI. A més hem d’enregistrar el nom, cognoms, adreça i telèfon.  
 Aquest empleats estan assignats a un determinat departament. Els departaments s’identifiquen amb un codi i també guardarem el nom complert del departament i el telèfon.
 
 Cada empleat té assignat un grup-nivell. Un grup-nivell s’identifica per un codi (A1, B1, etc.) i també enregistrarem el salari total, el període de prova i els dies de vacances.
 
-\-Cal tenir en compte que a la vostra base dades hi ha un empleat/da de cada grup i nivell de l’àrea 2 del conveni “Consultoria, tecnologies de la informació i estudis de mercat i de l’opinió pública”. Com sabeu, aquest és un dels convenis que més s’apliquen en el vostre sector. D’aquests empleats \-mirant el conveni-, heu de posar el salari total, el període de prova i les vacances.
+Cal tenir en compte que a la vostra base dades hi ha un empleat/da de cada grup i nivell de l’àrea 2 del conveni “Consultoria, tecnologies de la informació i estudis de mercat i de l’opinió pública”. Com sabeu, aquest és un dels convenis que més s’apliquen en el vostre sector. D’aquests empleats \-mirant el conveni-, heu de posar el salari total, el període de prova i les vacances.
 
 
 Es demana fer el disseny entitat-relació, la transformació a relacional i la implementació en un Sistema Gestor de Bases de Dades (MySQL, Oracle, etc.) amb la introducció d’un nombre significatiu de dades.
+
 
 **Mesures aplicades en matèria de prevenció de riscos laborals en un Centre de Processament de Dades (CPD)**
 
 Els CPD són instal·lacions crítiques que allotgen servidors i equips informàtics essencials per a empreses, i presenten riscos específics com incendis, descàrregues elèctriques, caigudes o problemes ergonòmics. Aquest informe recull les principals mesures preventives implementades per garantir la seguretat dels treballadors, basant-me en normatives com la Llei 31/1995 de Prevenció de Riscos Laborals i en pràctiques habituals del sector.
 
-**1\. Identificació dels riscos en un CPD**
+
+**1. Identificació dels riscos en un CPD**
 
 Abans d’aplicar mesures, és clau identificar els riscos més comuns en un CPD:
 
@@ -1546,61 +1549,81 @@ Abans d’aplicar mesures, és clau identificar els riscos més comuns en un CPD
 * **Riscos ergonòmics**: Males postures en tasques de manteniment o monitors mal ajustats.  
 * **Riscos ambientals**: Temperatures extremes per sistemes de climatització o exposició a gasos en cas de fuites.
 
-**2\. Mesures preventives aplicades**
+
+**2. Mesures preventives aplicades**
 
 Per abordar aquests riscos, s’han implementat les següents mesures, agrupades per categories:
 
+
 **2.1. Prevenció de riscos elèctrics**
 
-* **Instal·lacions certificades**: Tots els sistemes elèctrics compleixen la normativa del Reglament Electrotècnic de Baixa Tensió. Es fan revisions periòdiques per detectar anomalies.  
+* **Instal·lacions certificades**: Tots els sistemes elèctrics compleixen la normativa del Reglament Electrotècnic de Baixa Tensió. Es fan revisions periòdiques per detectar anomalies.
+   
 * **Proteccions**: Interruptors diferencials i magnetotèrmics en quadres elèctrics per evitar descàrregues.  
 * **Formació**: Els tècnics reben formació específica sobre seguretat elèctrica, incloent l’ús de guants aïllants i eines certificades.  
 * **Senyalització**: Zones d’alta tensió marcades amb cartells de perill i accés restringit.
 
+
 **2.2. Prevenció d’incendis**
 
 * **Sistemes de detecció**: Detectors de fum i calor instal·lats en tot el CPD, connectats a una central d’alarmes.  
-* **Extinció automàtica**: Sistemes d’extinció amb gas inert (com FM-200) que no danya els equips i és segur per als treballadors. També hi ha extintors de CO₂ a mà.  
+* **Extinció automàtica**: Sistemes d’extinció amb gas inert (com FM-200) que no danya els equips i és segur per als treballadors. També hi ha extintors de CO₂ a mà.
+  
 * **Materials ignífugs**: Cables i revestiments amb certificació de resistència al foc.  
 * **Simulacres**: Es fan simulacres anuals per entrenar el personal en evacuacions i ús d’extintors.
 
+
 **2.3. Prevenció de riscos físics**
 
-* **Ordre i neteja**: Els cables estan canalitzats en safates elevades per evitar ensopegades. El terra és antilliscant i lliure d’obstacles.  
-* **Manipulació de càrregues**: S’usen carros elevadors o plataformes per moure servidors pesants, i es forma el personal en tècniques d’aixecament segur.  
-* **Control de soroll**: Els treballadors que operen prop de sistemes de refrigeració usen protectors auditius quan el nivell de decibels supera els 85 dB.  
+* **Ordre i neteja**: Els cables estan canalitzats en safates elevades per evitar ensopegades. El terra és antilliscant i lliure d’obstacles.
+  
+* **Manipulació de càrregues**: S’usen carros elevadors o plataformes per moure servidors pesants, i es forma el personal en tècniques d’aixecament segur.
+  
+* **Control de soroll**: Els treballadors que operen prop de sistemes de refrigeració usen protectors auditius quan el nivell de decibels supera els 85 dB.
+  
 * **Il·luminació**: Llums LED amb intensitat adequada per evitar fatiga visual, especialment en tasques de manteniment.
+
+
 
 **2.4. Prevenció de riscos ergonòmics**
 
-* **Estacions de treball**: Monitors i teclats ajustables per mantenir postures neutres. Es proporcionen cadires ergonòmiques per a tasques administratives al CPD.  
+* **Estacions de treball**: Monitors i teclats ajustables per mantenir postures neutres. Es proporcionen cadires ergonòmiques per a tasques administratives al CPD.
+   
 * **Pausos**: S’estableixen descansos cada dues hores per a tècnics que fan tasques repetitives, com la instal·lació de cablejat.  
 * **Formació**: Sessions sobre ergonomia per conscienciar sobre postures correctes i ajustos dels equips.
 
+
 **2.5. Prevenció de riscos ambientals**
 
-* **Climatització**: Sistemes de refrigeració redundants mantenen la temperatura entre 18-24 ºC i la humitat al 40-60%, evitant cops de calor o molèsties.  
+* **Climatització**: Sistemes de refrigeració redundants mantenen la temperatura entre 18-24 ºC i la humitat al 40-60%, evitant cops de calor o molèsties.
+
+    
 * **Ventilació**: Filtres d’aire per reduir partícules i garantir la qualitat de l’aire.  
 * **Control de gasos**: Sensors de CO₂ i protocols per detectar fuites en sistemes de refrigeració.
 
-**3\. Organització i formació**
+
+**3. Organització i formació**
 
 * **Pla de prevenció**: El CPD té un pla de prevenció de riscos laborals actualitzat, amb avaluacions periòdiques dels llocs de treball.  
-* **Formació contínua**: Els treballadors reben cursos anuals sobre RRLL, incloent primers auxilis, evacuació i ús d’equips de protecció individual (EPI).  
+* **Formació contínua**: Els treballadors reben cursos anuals sobre RRLL, incloent primers auxilis, evacuació i ús d’equips de protecció individual (EPI).
+  
 * **EPI**: Es proporcionen guants aïllants, calçat de seguretat, ulleres protectores i protectors auditius segons la tasca.  
 * **Comitè de seguretat**: Un comitè de salut laboral revisa incidents i proposa millores.
+  
 
-**4\. Integració amb el projecte InnovateTech**
+**4. Integració amb el projecte InnovateTech**
 
 En el context del nostre projecte InnovateTech, aquestes mesures s’han aplicat al CPD d’EC22 (ip-172-31-21-192). Per exemple:
 
-* Hem assegurat que la base de dades innovat\_db i els servidors estiguin en un entorn segur, amb detectors d’incendis i climatització adequada.  
+* Hem assegurat que la base de dades innovat\_db i els servidors estiguin en un entorn segur, amb detectors d’incendis i climatització adequada.
+
+  
 * Els tècnics que accedeixen al CPD per manteniment (e.g., backups a /backups i S3) usen EPI i segueixen protocols d’ordre.  
 * Hem compartit aquestes pràctiques amb el meu company per resoldre el seu problema de connexió, ja que un entorn segur facilita tasques com l’accés a empleats.php en EC21.
 
-# Anàlisi del Conveni Laboral: Salaris, Períodes de Prova i Vacances per Grup-Nivell
 
----
+
+# Anàlisi del Conveni Laboral: Salaris, Períodes de Prova i Vacances per Grup-Nivell
 
 ## 1. Salaris per Grup-Nivell
 
