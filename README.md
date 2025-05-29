@@ -571,41 +571,37 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 ### Planells
 
 #### Plànol de la sala del CPD
-- Distribució de:
-  - Portes de seguretat
-  - Càmeres de videovigilància
-  - Sensors de fum/calor
-  - Extintors
-  - Vies d’evacuació
-- Ubicació dels sistemes de control d’accés.
-- Escala recomanada: **1:100**
+
+<p align="center">
+  <img src="fotos/fotosSRV/{25A99ECA-52B9-48A5-A7D8-AAC8AB5C0F65}.png" alt="Connexió entre servidors i switches">
+</p> 
 
 #### Diagrama de flux de seguretat
-- Esquema del procés d’accés:
-  - Autenticació
-  - Registre
-  - Verificació
-- Connexions entre sistemes i sala de control.
-
-### Diagrames
+<p align="center">
+  ![diagram1](https://github.com/user-attachments/assets/77f1aef2-66b0-4fc6-8fae-3644f26e03db)
+</p> 
 
 #### Diagrama de videovigilància
-- Xarxa de càmeres IP
-- Servidor d’enregistrament
-- Protocols de xifratge i flux de dades
+<p align="center">
+  ![diagram2](https://github.com/user-attachments/assets/767e8c1c-db82-4274-9967-671aeda46c44)
+</p> 
+
 
 #### Diagrama del sistema antiincendis
-- Sensors
-- Alarmes
-- Dipòsits de gas net
-- Connexió al panell central
+
+<p align="center">
+  ![Diagrama Fuego](https://github.com/user-attachments/assets/d3a32ba1-5626-4ee7-8017-3d453024b984)
+</p> 
 
 ### Fotografies
-- Imatges (reals o simulades) de:
   - Portes de seguretat amb biometria
+<p align="center">
+  ![image](https://github.com/user-attachments/assets/05ef1c08-d6dc-41f0-9f9f-d3beaed14ba9)
+</p>
   - Càmeres instal·lades
-  - Extintors i senyals d’evacuació
-
+<p align="center">
+  ![image](https://github.com/user-attachments/assets/737e6320-6cd8-4063-81bf-f14287448b39)
+</p>
 
 # Seguretat Lògica
 
@@ -1427,15 +1423,7 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
 
  ![image](https://github.com/user-attachments/assets/21ca1f2a-af81-4b47-91d2-87c1c75701ee)
 
-
-3.  Confirma la notificación en Discord:
-
-    ```
-    Fail2Ban Alert: IP <TEST_IP> has been banned due to a DDoS attack by jail nginx-ddos on ip-172-31-204-100 at <timestamp>
-
-    ```
-
-4.  Desbloquea la IP:
+3.  Desbloquea la IP:
 
     ```
     sudo fail2ban-client unban <TEST_IP>
@@ -1457,6 +1445,8 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
   <img src="fotos/fransicks/duckdns3.png" alt="duckdns" />
 </div>
 
+* **Empleats**:  
+  * Identificador: DNI.  
 
 
 ---
