@@ -1359,4 +1359,57 @@ En el context del nostre projecte InnovateTech, aquestes mesures s’han aplicat
 * Els tècnics que accedeixen al CPD per manteniment (e.g., backups a /backups i S3) usen EPI i segueixen protocols d’ordre.  
 * Hem compartit aquestes pràctiques amb el meu company per resoldre el seu problema de connexió, ja que un entorn segur facilita tasques com l’accés a empleats.php en EC21.
 
-**Conclusió**
+# Anàlisi del Conveni Laboral: Salaris, Períodes de Prova i Vacances per Grup-Nivell
+
+---
+
+## 1. Salaris per Grup-Nivell
+
+La taula **Grups_Nivell** recull la remuneració bruta anual, indicada a la columna *Salari Total*, associada a cada categoria professional definida pel seu codi de grup.
+
+A continuació es detallen els salaris corresponents a cada grup-nivell, que reflecteixen la compensació econòmica assignada segons la responsabilitat i experiència esperada:
+
+| Grup-Nivell | Salari Total Anual (€) |
+|-------------|-----------------------:|
+| A1          | 50.000,00 €            |
+| A2          | 45.000,00 €            |
+| B1          | 38.000,00 €            |
+| B2          | 34.000,00 €            |
+| C1          | 28.000,00 €            |
+| C2          | 24.000,00 €            |
+
+---
+
+## 2. Períodes de Prova per als Treballadors
+
+El període de prova és el temps durant el qual l’empresa pot avaluar la capacitat i adaptació del treballador al lloc de feina abans de formalitzar definitivament la contractació. Aquest període està definit per la columna *Periode Prova* a la taula **Grups_Nivell** i varia segons la categoria professional.
+
+Els períodes de prova assignats per grup-nivell són:
+
+| Grup-Nivell | Durada del Període de Prova |
+|-------------|-----------------------------|
+| A1          | 6 mesos                     |
+| A2          | 6 mesos                     |
+| B1          | 4 mesos                     |
+| B2          | 4 mesos                     |
+| C1          | 3 mesos                     |
+| C2          | 3 mesos                     |
+
+Aquest temps permet garantir que tant empresa com treballador disposen d’un marge per confirmar que la relació laboral és adequada.
+
+---
+
+## 3. Vacances Assignades pel Conveni
+
+Les vacances anuals constitueixen un dret essencial per al descans i la recuperació del treballador. Segons el conveni, el nombre de dies de vacances es determina en funció del grup-nivell del treballador, reflectit a la columna *Dies Vacances* de la taula **Grups_Nivell**.
+
+Els dies de vacances anuals assignats a cada categoria són:
+
+| Grup-Nivell | Dies de Vacances Anuals |
+|-------------|------------------------:|
+| A1          | 30 dies                 |
+| A2          | 28 dies                 |
+| B1          | 26 dies                 |
+| B2          | 25 dies                 |
+| C1          | 23 dies                 |
+| C2          | 22 dies                 |
