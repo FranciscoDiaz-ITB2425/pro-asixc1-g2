@@ -131,6 +131,15 @@ Aquesta estructura facilita el manteniment, millora l’eficiència energètica 
   <img src="fotos/fotosSRV/fotoESTRUCTURAsrv.png" alt="Distribució de racks i cablejat">
 </p> 
 
+1. SERVER  
+2. SWITCH  
+3. PATCH PANEL  
+4. VENTILADOR  
+5. PANELES CIEGOS  
+6. SAI UPS  
+7. NAS
+
+
 # Infraestructura IT
 
 Per desenvolupar aquesta proposta, s’han investigat les tendències actuals en hardware per a centres de dades, utilitzant fonts fiables com especificacions de fabricants (Dell, Cisco, Panduit) i estàndards de la indústria. S’han prioritzat components que equilibren rendiment, eficiència energètica i sostenibilitat, considerant les necessitats específiques d’Innovate Tech. La selecció s’ha centrat en hardware compatible amb un entorn híbrid (núvol i local) per maximitzar l’escalabilitat i minimitzar l’impacte ambiental.
