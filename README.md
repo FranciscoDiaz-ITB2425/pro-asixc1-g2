@@ -1209,111 +1209,101 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
 
 
 ---
-
-Manual de Configuración de Fail2Ban para Nginx
+Manual de Configuració de Fail2Ban per a Nginx
 ==============================================
 
-Introducción
-------------
+Introducció
+-----------
 
-Este manual describe cómo configurar **Fail2Ban** en un servidor Ubuntu para proteger un servidor **Nginx** (IP: `172.31.204.78`) contra ataques **DDoS** y **SQL Injection**. Fail2Ban monitorea los logs de acceso de Nginx, bloquea IPs maliciosas y envía notificaciones a un webhook de Discord indicando el tipo de ataque detectado.
+Aquest manual descriu com configurar **Fail2Ban** en un servidor Ubuntu per protegir un servidor **Nginx** (IP: `172.31.204.78`) contra atacs **DDoS** i **SQL Injection**. Fail2Ban monitoritza els logs d'accés de Nginx, bloqueja IPs malicioses i envia notificacions a un webhook de Discord indicant el tipus d'atac detectat.
 
-Requisitos
-----------
+Requisits
+---------
 
--   Servidor Ubuntu con Nginx instalado.
--   Acceso con permisos de `sudo`.
--   Logs de Nginx en `/var/log/nginx/access.log`.
--   Webhook de Discord para notificaciones.
+-   Servidor Ubuntu amb Nginx instal·lat.
+-   Accés amb permisos de `sudo`.
+-   Logs de Nginx a `/var/log/nginx/access.log`.
+-   Webhook de Discord per a notificacions.
 
-Instalación de Fail2Ban
------------------------
+Instal·lació de Fail2Ban
+------------------------
 
-1.  Actualiza el sistema e instala Fail2Ban:
+1.  Actualitza el sistema i instal·la Fail2Ban:
 
     ```
     sudo apt update && sudo apt upgrade -y
     sudo apt install fail2ban -y
-
     ```
 
-2.  Inicia y habilita el servicio:
+2.  Inicia i habilita el servei:
 
     ```
     sudo systemctl start fail2ban
     sudo systemctl enable fail2ban
     sudo systemctl status fail2ban
-
     ```
 
-
-Configuración de Fail2Ban
+Configuració de Fail2Ban
 -------------------------
 
+### 1. Configurar Filtres
 
-### 1. Configurar Filtros
+Es van crear dos filtres per detectar atacs específics als logs de Nginx.
 
-Se crearon dos filtros para detectar ataques específicos en los logs de Nginx.
+#### Filtre per a DDoS (`nginx-ddos`)
 
-#### Filtro para DDoS (`nginx-ddos`)
-
-1.  Crea el filtro:
+1.  Crea el filtre:
 
     ```
     sudo nano /etc/fail2ban/filter.d/nginx-ddos.conf
-
     ```
 
-2.  Contenido:
+2.  Contingut:
 
     ```
     [Definition]
     failregex = ^<HOST> -.*"(GET|POST|HEAD).*HTTP.*$
     ignoreregex =
-
     ```
 
-    -   Detecta solicitudes HTTP repetitivas (GET, POST, HEAD) que indican un posible ataque DDoS.
+    - Detecta sol·licituds HTTP repetitives (GET, POST, HEAD) que indiquen un possible atac DDoS.
 
-#### Filtro para SQL Injection (`nginx-sql-injection`)
+#### Filtre per a SQL Injection (`nginx-sql-injection`)
 
-1.  Crea el filtro:
+1.  Crea el filtre:
 
     ```
     sudo nano /etc/fail2ban/filter.d/nginx-sql-injection.conf
-
     ```
 
-2.  Contenido:
+2.  Contingut:
 
     ```
     [Definition]
     failregex = ^<HOST> -.*"(GET|POST).*(union|select|insert|delete|drop|1=1|--|\'|").*HTTP.*$
     ignoreregex =
-
     ```
 
-    -   Detecta solicitudes HTTP con palabras clave de SQL Injection (por ejemplo, `union`, `select`, `1=1`).
-3.  Prueba los filtros con los logs de Nginx:
+    - Detecta sol·licituds HTTP amb paraules clau pròpies d'injecció SQL (per exemple, `union`, `select`, `1=1`).
+
+3.  Prova els filtres amb els logs de Nginx:
 
     ```
     sudo fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-ddos.conf
     sudo fail2ban-regex /var/log/nginx/access.log /etc/fail2ban/filter.d/nginx-sql-injection.conf
-
     ```
 
 ### 2. Configurar Jails
 
-Los jails definen cómo Fail2Ban responde a los ataques detectados.
+Els jails defineixen com Fail2Ban respon als atacs detectats.
 
-1.  Edita el archivo de jails:
+1.  Edita el fitxer de jails:
 
     ```
     sudo nano /etc/fail2ban/jail.local
-
     ```
 
-2.  Contenido:
+2.  Contingut:
 
     ```
     [DEFAULT]
@@ -1344,32 +1334,30 @@ Los jails definen cómo Fail2Ban responde a los ataques detectados.
     findtime = 600
     action = %(action_)s
              discord-notify
-
     ```
 
-    -   **Parámetros**:
-        -   `bantime`: Duración del bloqueo (3600 segundos = 1 hora, 86400 segundos = 24 horas).
-        -   `findtime`: Ventana de tiempo para contar intentos (600 segundos = 10 minutos, 60 segundos = 1 minuto).
-        -   `maxretry`: Número máximo de intentos antes de bloquear (100 para DDoS, 3 para SQL Injection).
-        -   `logpath`: Ruta al log de Nginx.
-        -   `action`: Usa la acción predeterminada (`%(action_)s`) más la notificación a Discord.
+    - **Paràmetres**:
+        - `bantime`: Duració del bloqueig (3600 segons = 1 hora, 86400 segons = 24 hores).
+        - `findtime`: Finestra de temps per comptar intents (600 segons = 10 minuts, 60 segons = 1 minut).
+        - `maxretry`: Nombre màxim d’intents abans de bloquejar (100 per DDoS, 3 per SQL Injection).
+        - `logpath`: Ruta al log de Nginx.
+        - `action`: Utilitza l'acció predeterminada (`%(action_)s`) i la notificació a Discord.
 
-### 3. Configurar Notificaciones a Discord
+### 3. Configurar Notificacions a Discord
 
-Se creó una acción personalizada para enviar notificaciones a Discord, indicando si el bloqueo es por DDoS o SQL Injection.
+S'ha creat una acció personalitzada per enviar notificacions a Discord, indicant si el bloqueig és per DDoS o SQL Injection.
 
-#### Crear el Script de Notificación
+#### Crear l'Script de Notificació
 
-1.  Crea el script:
+1.  Crea l’script:
 
     ```
     sudo nano /etc/fail2ban/action.d/discord-notify.sh
-
     ```
 
-2.  Contenido:
+2.  Contingut:
 
-    ```
+    ```bash
     #!/bin/bash
     WEBHOOK_URL="https://discord.com/api/webhooks/1376445623745904701/eaCwi_8-cdpul8g-iGpTGj5yo9o-7mGkJhfE4J7eKbbuCNyMVOWfiEwJJCg5-c8axAoP"
     IP=$1
@@ -1377,37 +1365,35 @@ Se creó una acción personalizada para enviar notificaciones a Discord, indican
     if [[ "$JAIL" == "nginx-ddos" ]]; then
         ATTACK_TYPE="DDoS"
     elif [[ "$JAIL" == "nginx-sql-injection" ]]; then
-        ATTACK_TYPE="SQL Injection"
+        ATTACK_TYPE="Injecció SQL"
     else
-        ATTACK_TYPE="Unknown"
+        ATTACK_TYPE="Desconegut"
     fi
-    MESSAGE="Fail2Ban Alert: IP $IP has been banned due to a $ATTACK_TYPE attack by jail $JAIL on $(hostname) at $(date)"
+    MESSAGE="Alerta de Fail2Ban: La IP $IP ha estat bloquejada per un atac de tipus $ATTACK_TYPE pel jail $JAIL a $(hostname) el $(date)"
     curl -X POST -H "Content-Type: application/json"\
          -d "{\"content\": \"$MESSAGE\"}"\
          $WEBHOOK_URL
-
     ```
 
-    -   **Explicación**:
-        -   Determina el tipo de ataque (`DDoS` o `SQL Injection`) según el jail.
-        -   Envía un mensaje al webhook de Discord con la IP bloqueada, tipo de ataque, nombre del jail, hostname y fecha.
-3.  Asigna permisos:
+    - **Explicació**:
+        - Determina el tipus d’atac (`DDoS` o `SQL Injection`) segons el jail.
+        - Envia un missatge al webhook de Discord amb la IP bloquejada, tipus d’atac, nom del jail, hostname i data.
+
+3.  Dona permisos d'execució:
 
     ```
     sudo chmod +x /etc/fail2ban/action.d/discord-notify.sh
-
     ```
 
-#### Crear la Acción de Fail2Ban
+#### Crear l’Acció de Fail2Ban
 
-1.  Crea el archivo de acción:
+1.  Crea el fitxer d'acció:
 
     ```
     sudo nano /etc/fail2ban/action.d/discord-notify.conf
-
     ```
 
-2.  Contenido:
+2.  Contingut:
 
     ```
     [Definition]
@@ -1416,66 +1402,60 @@ Se creó una acción personalizada para enviar notificaciones a Discord, indican
     actioncheck =
     actionban = /etc/fail2ban/action.d/discord-notify.sh <ip> <name>
     actionunban =
-
     ```
 
-    -   Usa `<ip>` y `<name>` para pasar la IP bloqueada y el nombre del jail al script.
+    - Utilitza `<ip>` i `<name>` per passar la IP bloquejada i el nom del jail a l’script.
 
-### 4. Resolución de Errores
+### 4. Resolució d’Errors
 
-Durante la configuración, se encontró un error:
+Durant la configuració es va trobar aquest error:
 
 ```
 ERROR: Failed during configuration: Bad value substitution: option 'actionban' in section 'Definition' contains an interpolation key 'ip'...
 
 ```
 
-**Causa**: Uso incorrecto de `%(ip)s` y `%(jail)s` en `discord-notify.conf`.
+**Causa**: Ús incorrecte de `%(ip)s` i `%(jail)s` a `discord-notify.conf`.
 
-**Solución**:
+**Solució**:
 
--   Reemplazamos `%(ip)s` y `%(jail)s` por `<ip>` y `<name>` en `discord-notify.conf`, usando la sintaxis nativa de Fail2Ban para variables.
--   Probamos la configuración:
+- Substituir `%(ip)s` i `%(jail)s` per `<ip>` i `<name>` a `discord-notify.conf`, utilitzant la sintaxi nativa de Fail2Ban.
+- Provar la configuració:
 
     ```
     sudo fail2ban-client -t
-
     ```
 
--   Reiniciamos Fail2Ban:
+- Reiniciar Fail2Ban:
 
     ```
     sudo systemctl restart fail2ban
-
     ```
 
-### 5. Pruebas
+### 5. Proves
 
-#### Probar Detección de DDoS
+#### Provar la Detecció de DDoS
 
-1.  Simula un ataque DDoS enviando múltiples solicitudes HTTP:
+1.  Simula un atac DDoS enviant múltiples sol·licituds HTTP:
 
     ```
     for i in {1..150}; do curl -s http://172.31.204.100/; done
-
     ```
-<p align="center">
-  <img src="fotos/fotosEC21/fail2ban4.png" alt="Distribució de racks i cablejat">
-</p> 
 
-2.  Verifica el bloqueo:
+2.  Verifica el bloqueig.
 
- ![image](https://github.com/user-attachments/assets/21ca1f2a-af81-4b47-91d2-87c1c75701ee)
-
-3.  Desbloquea la IP:
+3.  Desbloqueja la IP:
 
     ```
     sudo fail2ban-client unban <TEST_IP>
-
     ```
 
 
-## **DUCKDNS ON PREMISE:**
+## DUCKDNS ON PREMISE
+
+S'ha configurat **DuckDNS** al `crontab` perquè s'actualitzi constantment la IP pública de la instància al portal web de DuckDNS.  
+Aquesta configuració garanteix que, cada vegada que s'encén la màquina, no es perdi l'associació del DNS dinàmic amb la nova IP, mantenint així la resolució de noms funcional en tot moment.
+
 
 <div align="center">
   <img src="fotos/fransicks/duckdns1.png" alt="duckdns" />
