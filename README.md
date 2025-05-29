@@ -72,6 +72,9 @@ Per garantir ordre i seguretat:
 - **Cables d’alimentació sota terra tècnic**
 - **Etiquetatge i codificació per colors**
 
+<p align="center">
+  <img src="fotos/fotosSRV/Conexiones_Cableado_Redes.png" alt="Veure imatge del terra tècnic">
+</p>
 
 ---
 
@@ -205,6 +208,10 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 #### ODS 13:
 - Menor extracció de recursos, disseny compacte per eficiència energètica
 
+<p align="center">
+  <img src="fotos/fotosSRV/fotoSWITCHpanel.png" alt="Patch Panel">
+</p> 
+
 ---
 
 ## Switches: Cisco Nexus 93600CD-GX (2 unitats)
@@ -232,8 +239,9 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 #### ODS 13:
 - Fabricació amb menor petjada de carboni
 
-🔗 **Enllaç oficial:**  
-[Cisco Nexus 93600CD-GX Switch](https://www.cisco.com/site/us/en/products/networking/switches/nexus-9000-series-switches/index.html)
+<p align="center">
+  <img src="fotos/fotosSRV/SwitchFinal.jpg" alt="Switch">
+</p> 
 
 ---
 
@@ -464,6 +472,9 @@ Els **31–33U lliures per rack (138–147 cm)** permeten ampliar la infraestruc
 - Configuració del SAI en **mode ECO** en càrregues baixes
 - **Gestió responsable del reciclatge** de bateries amb un proveïdor autoritzat
 
+<p align="center">
+  <img src="fotos/fotosSRV/Conexiones_Cableado_Energia.png" alt="Connexió entre servidors i switches">
+</p> 
 
 # Seguretat Física del CPD
 
