@@ -1251,12 +1251,11 @@ Instalación de Fail2Ban
     ```
 
 
-fotos/fotosEC21/fail2ban2.png
 Configuración de Fail2Ban
 -------------------------
 
 
-### 1\. Configurar Filtros
+### 1. Configurar Filtros
 
 Se crearon dos filtros para detectar ataques específicos en los logs de Nginx.
 
@@ -1359,7 +1358,7 @@ Los jails definen cómo Fail2Ban responde a los ataques detectados.
         -   `logpath`: Ruta al log de Nginx.
         -   `action`: Usa la acción predeterminada (`%(action_)s`) más la notificación a Discord.
 
-### 3\. Configurar Notificaciones a Discord
+### 3. Configurar Notificaciones a Discord
 
 Se creó una acción personalizada para enviar notificaciones a Discord, indicando si el bloqueo es por DDoS o SQL Injection.
 
@@ -1426,7 +1425,7 @@ Se creó una acción personalizada para enviar notificaciones a Discord, indican
 
     -   Usa `<ip>` y `<name>` para pasar la IP bloqueada y el nombre del jail al script.
 
-### 4\. Resolución de Errores
+### 4. Resolución de Errores
 
 Durante la configuración, se encontró un error:
 
@@ -1494,8 +1493,6 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
   <img src="fotos/fransicks/duckdns3.png" alt="duckdns" />
 </div>
 
-* **Empleats**:  
-  * Identificador: DNI.  
 
 
 ---
