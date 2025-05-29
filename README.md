@@ -94,6 +94,7 @@ El terra tècnic estarà enfonsat al terra de la nau, amb **reixes i portes d’
 
 ---
 
+
 ## Esbós de la sala de servidors
 
 Característiques:
@@ -115,6 +116,7 @@ Característiques:
 
 ---
 
+
 ## Estructuració dels racks
 
 Comptem amb **3 racks de 42U**, organitzats en una fila horitzontal:
@@ -130,20 +132,11 @@ Cada rack inclou:
 
 Aquesta estructura facilita el manteniment, millora l’eficiència energètica i permet escalar la infraestructura segons necessitats.
 
-c
-
-1. SERVER  
-2. SWITCH  
-3. PATCH PANEL  
-4. VENTILADOR  
-5. PANELES CIEGOS  
-6. SAI UPS  
-7. NAS
-
 
 # Infraestructura IT
 
 Per desenvolupar aquesta proposta, s’han investigat les tendències actuals en hardware per a centres de dades, utilitzant fonts fiables com especificacions de fabricants (Dell, Cisco, Panduit) i estàndards de la indústria. S’han prioritzat components que equilibren rendiment, eficiència energètica i sostenibilitat, considerant les necessitats específiques d’Innovate Tech. La selecció s’ha centrat en hardware compatible amb un entorn híbrid (núvol i local) per maximitzar l’escalabilitat i minimitzar l’impacte ambiental.
+
 
 ## Servidor: Dell PowerEdge R670
 
@@ -157,6 +150,7 @@ Per desenvolupar aquesta proposta, s’han investigat les tendències actuals en
 - Serveis web i transcodificació de vídeo en temps real
 - Suport per a àudio i compartició de dades
 
+
 ### Sostenibilitat:
 
 #### ODS 7:
@@ -164,9 +158,11 @@ Per desenvolupar aquesta proposta, s’han investigat les tendències actuals en
 - **OpenManage Power Manager:** Monitoratge i optimització del consum
 - **Dell Smart Cooling:** Reducció de fins a un 20% del consum de refrigeració
 
+
 #### ODS 12:
 - **Disseny modular:** Facilita l’actualització sense substituir tot l’equip
 - **Materials reciclables:** Programes com Dell Asset Recovery Services
+
 
 #### ODS 13:
 - **Materials i processos sostenibles:** Alumini reciclat redueix fins a un 95% d’emissions respecte alumini verge
@@ -184,6 +180,7 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 
 ---
 
+
 ## Patch Panels: HYCONNECT HPP-94802F
 
 **Especificacions tècniques:**
@@ -194,6 +191,7 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 **Propòsit:**
 - Organització de connexions de xarxa entre servidors, switches i dispositius auxiliars
 - Suport per a streaming 2K de 8000-9500 connexions simultànies (48-57 Gbps)
+
 
 ### Sostenibilitat:
 
@@ -212,6 +210,7 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 
 ---
 
+
 ## Switches: Cisco Nexus 93600CD-GX (2 unitats)
 
 **Especificacions tècniques:**
@@ -223,6 +222,7 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 - Gestió del tràfic de 48-57 Gbps de 8000-9500 connexions simultànies
 - Connexió amb núvols (AWS/Google Cloud)
 - Latència <1 ms i alta fiabilitat
+
 
 ### Sostenibilitat:
 
@@ -243,20 +243,36 @@ Els PowerEdge R760 són ideals per gestionar entre 8000 i 9500 connexions simult
 
 ---
 
+
+
 ## Planells i diagrames
 
+### VISTA ESQUEMATICA CPD
 <p align="center">
   <img src="fotosaudiovideo/fotocpd2d.png" alt="VISTA ESQUEMATICA CPD">
 </p>
 
+### FUNCIONAMENT PATCH PANEL
 <p align="center">
-  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Flux d'aire i refrigeració">
+  <img src="fotos/fotosSRV/funcionamentPATCHpanel.png" alt="Flux d'aire i refrigeració">
 </p>
 
+### ESTRUCTURA DELS SERVIDORS
 <p align="center">
-  <img src="fotosaudiovideo/fotonauindustrial.png" alt="Connexió entre servidors i switches">
+  <img src="fotos/fotosSRV/fotoESTRUCTURAsrv.png" alt="Connexió entre servidors i switches">
 </p>  
- 
+
+**1. SERVER
+2. SWITCH
+3. PATCH PANEL
+4. VENTILADOR
+5. PANELES CIEGOS
+6. SAI UPS
+7. NAS**
+
+
+---
+
 
 
 # Estudi d'Autonomia del CPD d'Innovate Tech
@@ -277,6 +293,7 @@ La infraestructura inclou:
 - 3 racks de **42U**
 
 ---
+
 
 ## Etapa 1: Càlcul del consum elèctric per rack
 
@@ -323,6 +340,7 @@ La infraestructura inclou:
 
 ---
 
+
 ## Etapa 2: Autonomia amb SAI
 
 ### Model de referència: APC Symmetra PX 10 kVA
@@ -354,6 +372,7 @@ La infraestructura inclou:
 
 ---
 
+
 ## Etapa 3: Temps de funcionament estimat
 
 | Escenari                     | Autonomia estimada |
@@ -366,6 +385,7 @@ La infraestructura inclou:
 
 ---
 
+
 ## Consideracions addicionals
 
 - **Càrrega variable:** amb menys connexions (ex. 4000), el consum pot baixar a 4–5 kW, allargant l’autonomia.
@@ -373,6 +393,7 @@ La infraestructura inclou:
 - **Bateries:** es degraden amb el temps (~20% menys autonomia als 3–5 anys sense manteniment).
 
 ---
+
 
 ## Resum Final
 
@@ -411,6 +432,7 @@ Els **31–33U lliures per rack (138–147 cm)** permeten ampliar la infraestruc
 
 ---
 
+
 ## SAI (Sistema d’Alimentació Ininterrompuda)
 
 ### Capacitat i especificacions
@@ -443,6 +465,7 @@ Els **31–33U lliures per rack (138–147 cm)** permeten ampliar la infraestruc
 
 ---
 
+
 ## Components addicionals
 
 - **Mòduls de bypass automàtic**
@@ -457,12 +480,14 @@ Els **31–33U lliures per rack (138–147 cm)** permeten ampliar la infraestruc
 
 ---
 
+
 ## Temps de funcionament sense corrent
 
 - **Objectiu:** 15 minuts per servidors i sistemes crítics
 - **Escalabilitat:** Possibilitat d’ampliació a 30 minuts afegint més bancs
 
 ---
+
 
 ## Sostenibilitat
 
@@ -502,6 +527,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 2. Videovigilància
 
 ### Càmeres IP d’alta resolució
@@ -524,6 +550,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 3. Sistemes de Prevenció, Detecció i Extinció d’Incendis
 
 ### Prevenció
@@ -545,6 +572,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 4. Vies d’Evacuació
 
 ### Rutes clarament senyalitzades
@@ -565,6 +593,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 - **Cartells informatius** amb plànol de sortida.
 
 ---
+
 
 ## 5. Diagrames, Planells i Fotografies
 
@@ -626,6 +655,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 2. Firewalls
 
 ### Política per defecte
@@ -651,6 +681,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 3. Monitorització
 
 ### Eines utilitzades
@@ -665,6 +696,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 - **Anàlisi de dades** i **identificació de tendències** per a millores contínues.
 
 ---
+
 
 ## 4. Còpies de Seguretat / Backups
 
@@ -685,6 +717,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 5. RAID (Redundant Array of Independent Disks)
 
 ### Configuració recomanada: **RAID 5**
@@ -704,6 +737,8 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
   - Possibilitat d’**afegir discos** per ampliar la capacitat.
 
 ---
+
+
 # Sostenibilitat
 
 ## Optimització del consum d’energia
@@ -752,6 +787,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 📄 Pàgina 1: Instal·lació de paquets per al servidor d'àudio
 
 **🎯 Objectiu**: Preparar el sistema per al servidor d'àudio amb Icecast2 i eines relacionades.
@@ -773,6 +809,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
    - **Acció**: Executar la comanda per activar el servei.
 
 ---
+
 
 ## 📄 Pàgina 2: Configuració del servidor Icecast2
 
@@ -799,6 +836,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 📄 Pàgina 3: Configuració del tallafocs i inici de DarkIce
 
 **🎯 Objectiu**: Obrir ports per a Icecast2 i iniciar el streaming amb DarkIce.
@@ -821,6 +859,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
    - **Acció**: Executar la comanda per iniciar el streaming.
 
 ---
+
 
 ## ▶️ Inici i execució d'Icecast i l'àudio
 
@@ -857,6 +896,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 ## 📄 Pàgina 4: Actualització del sistema
 
 **🎯 Objectiu**: Actualitzar el sistema per assegurar la versió més recent dels paquets.
@@ -872,9 +912,11 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 
 ---
 
+
 # 📹 VÍDEO – Configuració del servidor de streaming
 
 ---
+
 
 ## 📄 Pàgina 5: Configuració del servidor de streaming de vídeo
 
@@ -918,6 +960,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
    - **Acció**: Afegir aquesta configuració al fitxer de Nginx i reiniciar el servei.
 
 ---
+
 
 ## ▶️ Execució i comprovació del vídeo
 
@@ -1004,7 +1047,7 @@ Per garantir la seguretat del CPD, cal implementar un sistema robust de control 
 </div>
 
 
-<!-- Parte server Diego -->
+---
 
 
 # **EC21**
@@ -1023,6 +1066,7 @@ sudo apt install nginx
 </div>
 
 ---
+
 
 ### **Configuració**
 
@@ -1047,6 +1091,7 @@ També activem el site i ja tindríem operativa la pàgina web.
 
 ---
 
+
 ### **Comprovació**
 
 <div align="center">
@@ -1058,6 +1103,7 @@ També activem el site i ja tindríem operativa la pàgina web.
 </div>
 
 ---
+
 
 ## **SERVEI FTP**
 
@@ -1095,6 +1141,7 @@ Al directori li donem només permisos de lectura ja que l'ftp només serà per l
 
 ---
 
+
 ## **SERVEI SAMBA**
 Com a l’ftp no poden pujar coses ni fer canvis, tenim el samba que és pels usuaris tinguin un “núvol”.
 
@@ -1126,6 +1173,7 @@ Crearem una carpeta on engabiarem als usuaris per només poder tenir accés a aq
 </div>
 
 ---
+
 
 ## **EXTRA: CONTROL DE CANVIS PER DISCORD**
 
@@ -1163,13 +1211,13 @@ Configurem un script per que escolti el que esta pasant al samba indicant la car
 </div>
 
 
-
 # **EC21-2:**
 
 ## **FAIL2BAN:**
 
 
 ---
+
 Manual de Configuración de Fail2Ban para Nginx
 ==============================================
 
@@ -1210,6 +1258,7 @@ Instalación de Fail2Ban
 fotos/fotosEC21/fail2ban2.png
 Configuración de Fail2Ban
 -------------------------
+
 
 ### 1\. Configurar Filtros
 
@@ -1262,7 +1311,7 @@ Se crearon dos filtros para detectar ataques específicos en los logs de Nginx.
 
     ```
 
-### 2\. Configurar Jails
+### 2. Configurar Jails
 
 Los jails definen cómo Fail2Ban responde a los ataques detectados.
 
@@ -1409,7 +1458,7 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
 
     ```
 
-### 5\. Pruebas
+### 5. Pruebas
 
 #### Probar Detección de DDoS
 
@@ -1461,6 +1510,7 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
 
 ---
 
+
 # **EC22:**
 
 ## **BASE DE DADES:**
@@ -1478,7 +1528,7 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
   * Atributs: Salari total, període de prova, dies de vacances.  
   
 * **Conveni**:  
-  * S'ha de basar en el **conveni col·lectiu de Consultoria, Tecnologies de la Informació i Estudis de Mercat i de l'Opinió Pública**, àrea 2\.  
+  * S'ha de basar en el **conveni col·lectiu de Consultoria, Tecnologies de la Informació i Estudis de Mercat i de l'Opinió Pública**, àrea 2.  
   * Utilitzar la **taula salarial actualitzada de 2024** per als salaris, períodes de prova i vacances.  
   * Incloure un empleat per cada grup i nivell de l'àrea 2 del conveni.  
   
@@ -1490,7 +1540,7 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
 
 ### 
 
-### **1\. Disseny Entitat-Relació (E-R)**
+### **1. Disseny Entitat-Relació (E-R)**
 
 #### **Entitats i Relacions**
 
@@ -1516,7 +1566,7 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
 
 #### **Diagrama E-R:**
 
-\[Empleat\] \-- N:1 \--\> \[Departament\]  
+[Empleat\] \-- N:1 \--\> \[Departament\]  
    |                    Atributs:  
    |                    \- Codi (PK)  
    |                    \- Nom  
@@ -1537,7 +1587,7 @@ ERROR: Failed during configuration: Bad value substitution: option 'actionban' i
              \- Període de Prova  
              \- Dies de Vacances 
              
-<div align="center"\><img src="fotos/fotosEC22/fotoBBDD1.png" alt="BBDD"> /\> \</div\>
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD1.png" alt="BBDD"></div\>
 
 **Pas 1: Connexió al servidor MariaDB/MySQL**
 
@@ -1546,7 +1596,8 @@ mysql \-h 172.31.42.193 \-u web\_user \-p
 ```
 ---
 
-<div align="center"\><img src="fotos/fotosEC22/fotoBBDD2.png" alt="BBDD"> /\> \</div\>
+
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD2.png" alt="BBDD"></div\>
 
 **Pas 2: Crear la base de dades i seleccionar-la**
 
@@ -1556,7 +1607,8 @@ CREATE DATABASE inovatech_db;
 ```
 ---
 
-<div align="center"\><img src="fotos/fotosEC22/fotoBBDD3.png" alt="BBDD"> /\> \</div\>
+
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD3.png" alt="BBDD"></div\>
 
 **Pas 3: Crear la taula Departament**
 
@@ -1569,21 +1621,24 @@ CREATE TABLE Departament (
 ```
 ---
 
-<div align="center"\><img src="fotos/fotosEC22/fotoBBDD4.png" alt="BBDD"> /\> \</div\>
 
-**Pas 3: Crear la taula Grup\_Nivell**
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD4.png" alt="BBDD"></div\>
+
+**Pas 3: Crear la taula Grup_Nivell**
 
 ```sql
-CREATE TABLE Grup\_Nivell (  
+CREATE TABLE Grup_Nivell (  
  Codi INT PRIMARY KEY,  
  Salari\_Total DECIMAL(10,2) NOT NULL,  
  Periode\_Prova INT,  
  Dies\_Vacances INT  
  );
 ```
+
 ---
 
-<div align="center"\><img src="fotos/fotosEC22/fotoBBDD5.png" alt="BBDD"> /\> \</div\>
+
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD5.png" alt="BBDD"><div\>
 
 **Pas 3: Crear la taula Empleat amb claus foranes**
 
@@ -1602,7 +1657,7 @@ CREATE TABLE Empleat (
 ```
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD6.png" alt="BBDD" /\> \</div\>
+<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD6.png" alt="BBDD"></div\>
 
 **Pas 4: Inserir dades a la taula Departament**
 
@@ -1612,21 +1667,27 @@ INSERT INTO Departament (Codi, Nom, Telefon) VALUES
  (2, 'Informàtica', '934123457'),  
  (3, 'Màrqueting', '934123458');
 ```
+
 ---
 
-<div align="center"\><img src="fotos/fotosEC22/fotoBBDD7.png" alt="BBDD"> /\> \</div\>
 
-**Pas 4: Inserir dades a la taula Grup\_Nivell**
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD7.png" alt="BBDD"></div\>
+
+
+**Pas 4: Inserir dades a la taula Grup_Nivell**
 
 ```sql
-INSERT INTO Grup\_Nivell (Codi, Salari\_Total, Periode\_Prova, Dies\_Vacances) VALUES  
+INSERT INTO Grup_Nivell (Codi, Salari\_Total, Periode\_Prova, Dies\_Vacances) VALUES  
  (1, 30000.00, 90, 30),  
  (2, 45000.00, 60, 25),  
  (3, 60000.00, 30, 20);
 ```
+
 ---
 
-<div align="center"\><img src="fotos/fotosEC22/fotoBBDD8.png" alt="BBDD"> /\> \</div\>
+
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD8.png" alt="BBDD"></div\>
+
 **Pas 4: Inserir dades a la taula Empleat**
 
 ```sql
@@ -1636,9 +1697,11 @@ INSERT INTO Empleat (DNI, Nom, Cognoms, Adreca, Telefon, Codi\_Departament, Codi
  ('45678912C', 'Pere', 'Sánchez Gómez', 'Plaça Catalunya 3, Barcelona', '600123458', 3, 3);
 
 ```
+
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD9.png" alt="BBDD" /\> \</div\>
+
+<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD9.png" alt="BBDD"></div\>
 
 **Pas 5: Comprovació dels departaments**
 
@@ -1646,21 +1709,25 @@ INSERT INTO Empleat (DNI, Nom, Cognoms, Adreca, Telefon, Codi\_Departament, Codi
 SELECT \* FROM Departament;
 
 ```
+
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD10.png" alt="BBDD" /\> \</div\>
 
-**Pas 5: Comprovació dels grups-nivell**
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD10.png" alt="BBDD"></div\>
+
+**Pas 6: Comprovació dels grups-nivell**
 
 ```sql
-SELECT \* FROM Grup\_Nivell;
+SELECT \* FROM Grup_Nivell;
 
 ```
+
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD11.png" alt="BBDD" /\> \</div\>
 
-**Pas 5: Consultar empleats amb departaments i salaris**
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD11.png" alt="BBDD"></div\>
+
+**Pas 7: Consultar empleats amb departaments i salaris**
 
 ```sql
 SELECT e.DNI, e.Nom, e.Cognoms, d.Nom AS Departament, g.Salari\_Total  
@@ -1669,34 +1736,41 @@ SELECT e.DNI, e.Nom, e.Cognoms, d.Nom AS Departament, g.Salari\_Total
  JOIN Grup\_Nivell g ON e.Codi\_Grup\_Nivell \= g.Codi;
 
 ```
+
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD12.png" alt="BBDD" /\> \</div\>
 
-**Pas 6: Fer còpia de seguretat de la base de dades**
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD12.png" alt="BBDD"></div\>
+
+**Pas 8: Fer còpia de seguretat de la base de dades**
 ```bash
 mysqldump \-h 172.31.42.193 \-u web\_user \-p empresa \> empresa\_backup.sql
 ```
+
 ---
 
- <div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD13.png" alt="BBDD" /\> \</div\>
 
-**Pas 7: Restaurar la base de dades (si cal)**
+ <div align="center"\><img src="fotos/fotosEC22/fotoBBDD13.png" alt="BBDD"></div\>
+
+**Pas 9: Restaurar la base de dades (si cal)**
 ```bash
 mysql \-h 172.31.42.193 \-u web\_user \-p empresa \< empresa\_backup.sql
 ```
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD14.png" alt="BBDD" /\> \</div\>
+
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD14.png" alt="BBDD"></div\>
 
 
-**Pas 8 (opcional): Consultes addicionals per verificació**
+**Pas108 (opcional): Consultes addicionals per verificació**
 
 Altres consultes SQL útils per comprovacions més específiques.
 
+
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD15.png" alt="BBDD" /\> \</div\>
+
+<div align="center"\><img src="fotos/fotosEC22/fotoBBDD15.png" alt="BBDD"></div\>
 
 **Consulta filtrada: Empleats del departament 2**
 
@@ -1704,11 +1778,13 @@ Altres consultes SQL útils per comprovacions més específiques.
 SELECT Nom, Cognoms FROM Empleat WHERE Codi\_Departament \= 2;
 
 ```
+
 ---
 
-<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD16.png" alt="BBDD" /\> \</div\>
 
-**Consulta filtrada: Empleats amb salari \> 40000**
+<div align="center"\> \<img src="fotos/fotosEC22/fotoBBDD16.png" alt="BBDD"></div\>
+
+**Consulta filtrada: Empleats amb salari 40000**
 
 
 ```sql
@@ -1721,71 +1797,78 @@ SELECT Nom, Cognoms FROM Empleat
 
 **Investigar i comparar eficiència energètica amb altres proveïdors del núvol. Com els diferents proveïdors ofereixen solucions de CPD administrats per aquestes empreses i com donen cobertura als requeriments exposats anteriorment.**
 
+
 **Els principals proveïdors del núvol (Google Cloud, Microsoft Azure i AWS) estan molt compromesos amb la sostenibilitat i l’eficiència energètica dels seus Centres de Processament de Dades (CPD).**
+
 
 **Tots utilitzen CPDs propis i gestionats, amb certificacions que garanteixen la bona gestió energètica i ambiental.**
 
-* **Google Cloud** destaca per tenir un PUE molt baix (\~1.10) i funciona amb energia 100% renovable des de fa anys, amb l’objectiu d’operar sense emissions les 24 hores el 2030\.
+
+* **Google Cloud** destaca per tenir un PUE molt baix (\~1.10) i funciona amb energia 100% renovable des de fa anys, amb l’objectiu d’operar sense emissions les 24 hores el 2030.
+
 
 * **Microsoft Azure** també aposta per la renovabilitat total abans del 2025 i vol ser “carbon negative” el 2030\.
 
+
 * **AWS** està avançant cap al 100% renovable el 2025 i manté un PUE lleugerament superior (\~1.14).
+
 
 * **OVHcloud** ofereix una opció molt eficient amb un PUE excel·lent (\~1.09) i refrigeració per aire lliure, especialment pensada per al mercat europeu.
 
+---
 
 
 **IP ELASTICA**  
 
-per assignar una ip elastica hem d’anar a xarxa i seguretat i clicar a direccions ip elastiques. 
+**Per assignar una ip elastica hem d’anar a xarxa i seguretat i clicar a direccions ip elastiques.**
 
 <div align="center">
   <img src="fotos/fotoselastic/foto1.png" alt="Prova iperf3 client" />
 </div>
 
-després hem de clicar a ASSIGNAR DIRECCION IP ELASTICA per crear una ip per assignar.
+**Després hem de clicar a ASSIGNAR DIRECCION IP ELASTICA per crear una ip per assignar.**
 
 <div align="center">
   <img src="fotos/fotoselastic/foto2.png" alt="Prova iperf3 client" />
 </div>
 
-**cliquem a assignar**
+**Cliquem a assignar**
 
 <div align="center">
   <img src="fotos/fotoselastic/foto3.png" alt="Prova iperf3 client" />
 </div>
 
-**i ja tindrem una ip elastica, ara només falta assignar-la a l’instancia adequada**
+**I ja tindrem una ip elastica, ara només falta assignar-la a l’instancia adequada**
 
 <div align="center">
   <img src="fotos/fotoselastic/foto4.png" alt="Prova iperf3 client" />
 </div>
 
-**cliquem a l’IP i despres a DIrecció IP elastica associada.**
+**Cliquem a l’IP i despres a DIrecció IP elastica associada.**
 
 <div align="center">
   <img src="fotos/fotoselastic/10.png" alt="Prova iperf3 client" />
 </div>
 
-**aqui, el que farem es assignar l’IP elastica a l’instancia que pertoca, en aquest cas posem l’instancia EC23**
+**Aqui, el que farem es assignar l’IP elastica a l’instancia que pertoca, en aquest cas posem l’instancia EC23**
 
 <div align="center">
   <img src="fotos/fotoselastic/foto5.png" alt="Prova iperf3 client" />
 </div>
 
-**després posem l’IP privada que té la instància** 
+**Després posem l’IP privada que té la instància** 
 
 <div align="center">
   <img src="fotos/fotoselastic/foto6.png" alt="Prova iperf3 client" />
 </div>
 
-**i cliquem a associar**
+**I cliquem a associar**
 
 <div align="center">
   <img src="fotos/fotoselastic/foto7.png" alt="Prova iperf3 client" />
 </div>
 
-**per comprovar que ha funcionat hem d’anar a Instàncies i clicar a la instància a la qual hem assignat l’IP, i podrem comprovar que ja l’hem assignat.**
+**Per comprovar que ha funcionat hem d’anar a Instàncies i clicar a la instància a la qual hem assignat l’IP, i podrem comprovar que ja l’hem assignat.**
 
 <div align="center">
   <img src="fotos/fotoselastic/foto8.png" alt="Prova iperf3 client" />
@@ -1795,15 +1878,20 @@ després hem de clicar a ASSIGNAR DIRECCION IP ELASTICA per crear una ip per ass
   <img src="fotos/fotoselastic/foto9.png" alt="Prova iperf3 client" />
 </div>
 
+---
+
 
 # Disseny i implementació d’una base de dades
 
 ## Es tracta de dissenyar i implementar una base de dades per la gestió del personal de l’empresa. Els requisits que es demanen són els següents:
 
+
 Els empleats s’identifiquen pel seu DNI. A més hem d’enregistrar el nom, cognoms, adreça i telèfon.  
 Aquest empleats estan assignats a un determinat departament. Els departaments s’identifiquen amb un codi i també guardarem el nom complert del departament i el telèfon.
 
+
 Cada empleat té assignat un grup-nivell. Un grup-nivell s’identifica per un codi (A1, B1, etc.) i també enregistrarem el salari total, el període de prova i els dies de vacances.
+
 
 Cal tenir en compte que a la vostra base dades hi ha un empleat/da de cada grup i nivell de l’àrea 2 del conveni “Consultoria, tecnologies de la informació i estudis de mercat i de l’opinió pública”. Com sabeu, aquest és un dels convenis que més s’apliquen en el vostre sector. D’aquests empleats \-mirant el conveni-, heu de posar el salari total, el període de prova i les vacances.
 
@@ -1814,6 +1902,8 @@ Es demana fer el disseny entitat-relació, la transformació a relacional i la i
 **Mesures aplicades en matèria de prevenció de riscos laborals en un Centre de Processament de Dades (CPD)**
 
 Els CPD són instal·lacions crítiques que allotgen servidors i equips informàtics essencials per a empreses, i presenten riscos específics com incendis, descàrregues elèctriques, caigudes o problemes ergonòmics. Aquest informe recull les principals mesures preventives implementades per garantir la seguretat dels treballadors, basant-me en normatives com la Llei 31/1995 de Prevenció de Riscos Laborals i en pràctiques habituals del sector.
+
+---
 
 
 **1. Identificació dels riscos en un CPD**
@@ -1878,6 +1968,8 @@ Per abordar aquests riscos, s’han implementat les següents mesures, agrupades
 * **Ventilació**: Filtres d’aire per reduir partícules i garantir la qualitat de l’aire.  
 * **Control de gasos**: Sensors de CO₂ i protocols per detectar fuites en sistemes de refrigeració.
 
+---
+
 
 **3. Organització i formació**
 
@@ -1898,6 +1990,8 @@ En el context del nostre projecte InnovateTech, aquestes mesures s’han aplicat
 * Els tècnics que accedeixen al CPD per manteniment (e.g., backups a /backups i S3) usen EPI i segueixen protocols d’ordre.  
 * Hem compartit aquestes pràctiques amb el meu company per resoldre el seu problema de connexió, ja que un entorn segur facilita tasques com l’accés a empleats.php en EC21.
 
+
+---
 
 
 # Anàlisi del Conveni Laboral: Salaris, Períodes de Prova i Vacances per Grup-Nivell
@@ -1931,6 +2025,7 @@ A continuació es detallen els salaris corresponents a cada grup-nivell, que ref
 
 ---
 
+
 ## 2. Períodes de Prova per als Treballadors
 
 El període de prova és el temps durant el qual l’empresa pot avaluar la capacitat i adaptació del treballador al lloc de feina abans de formalitzar definitivament la contractació. Aquest període està definit per la columna *Periode Prova* a la taula **Grups_Nivell** i varia segons la categoria professional.
@@ -1958,7 +2053,9 @@ Els períodes de prova assignats per grup-nivell són:
 
 </div>
 
+
 ---
+
 
 ## 3. Vacances Assignades pel Conveni
 
