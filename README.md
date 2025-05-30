@@ -1,6 +1,6 @@
-# pro-asixc1-g2
+## pro-asixc1-g2
 
-# Proposta de CPD
+# Proposta de CPD INNOVATECH
 
 ## Ubicació física
 
